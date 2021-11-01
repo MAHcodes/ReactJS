@@ -1,9 +1,9 @@
 import TodoItem from "./TodoItem";
 
-function TodoList({todos, setTodos, handleDelete, handleCheck}) {
+function TodoList({todos, setTodos, handleDelete, handleCheck, handleEdit, value}) {
     return (
         todos.length ? (
-            <ul className="container list-unstyled">
+            <ul className="container list-unstyled d-flex flex-column">
             {todos.map(todo => {
                 return <TodoItem 
                     key={todo.id}
@@ -11,12 +11,13 @@ function TodoList({todos, setTodos, handleDelete, handleCheck}) {
                     setTodos={setTodos}
                     handleDelete={handleDelete}
                     handleCheck={handleCheck}
+                    handleEdit={handleEdit}
                 />
             })}
             </ul>
 
        ) : (
-           <h2 className="text-center text-muted my-auto">No Todos!</h2>
+           <h2 className="text-center text-muted my-auto">No Todos!{value ? ` Add ${value}` : ""}</h2>
        )
     )
 }

@@ -1,3 +1,7 @@
 li > label {
     word-wrap: anywhere;
 }
+
+li.completed {
+    order: 1;
+}

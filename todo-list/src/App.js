@@ -7,6 +7,7 @@ import { useState } from "react";
 
 const App = () => {
   const [todos, setTodos] = useState( localStorage.getItem("todos") ? JSON.parse(localStorage.getItem("todos")) : [] );
+  const [value, setValue] = useState("");
  
   const updateAndSaveTodos = newTodos => {
     setTodos(newTodos);
@@ -31,7 +32,17 @@ const App = () => {
       title: e.target[0].value,
     });
     updateAndSaveTodos(newTodos);
-    e.target[0].value = "";
+    setValue("");
+  }
+
+  const handleEdit = e => {
+    setValue(todos.find(todo => todo.id === Number(e)).title);
+    handleDelete(e);
+  }
+
+  const handleSearch = text => {
+    const filteredTodos =  todos.filter(todo => (todo.title).toLowerCase().includes(text.toLowerCase()));
+    return filteredTodos;
   }
 
   return (
@@ -39,12 +50,17 @@ const App = () => {
       <Header />
       <AddTodo 
         handleSubmit={handleSubmit}
+        value={value}
+        setValue={setValue}
+        handleSearch={handleSearch}
       />
       <TodoList 
-        todos={todos}
+        todos={handleSearch(value)}
         setTodos={setTodos}
         handleDelete={handleDelete}
         handleCheck={handleCheck}
+        handleEdit={handleEdit}
+        value={value}
       />
       <StatusBar 
         length={todos.length}

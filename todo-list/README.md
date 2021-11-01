@@ -1,3 +1,4 @@
 # TODO APP
 
-Simple TODO List App with React and Bootstrap.
+Simple CRUD TODO List App with React and Bootstrap.  
+[Live Demo](https://mhmdali102-todo-list.netlify.app/)
