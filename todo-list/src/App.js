@@ -3,25 +3,24 @@ import TodoList from "./TodoList";
 import AddTodo from "./AddTodo";
 import StatusBar from "./StatusBar";
 import Footer from "./Footer";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const App = () => {
-  const [todos, setTodos] = useState( localStorage.getItem("todos") ? JSON.parse(localStorage.getItem("todos")) : [] );
+  const [todos, setTodos] = useState( JSON.parse(localStorage.getItem("todos")) || [] );
   const [value, setValue] = useState("");
  
-  const updateAndSaveTodos = newTodos => {
-    setTodos(newTodos);
-    localStorage.setItem("todos", JSON.stringify(newTodos));
-  }
-
+  useEffect(() => {
+    localStorage.setItem("todos", JSON.stringify(todos));
+  }, [todos])
+  
   const handleDelete = id => {
     const newTodos = todos.filter(todo => todo.id !== Number(id));
-    updateAndSaveTodos(newTodos);
+    setTodos(newTodos);
   }
 
   const handleCheck = (id) => {
     const newTodos = todos.map(todo => todo.id === Number(id) ? {...todo, checked: !todo.checked} : todo);
-    updateAndSaveTodos(newTodos);
+    setTodos(newTodos);
   }
 
   const handleSubmit = (e) => {
@@ -31,7 +30,7 @@ const App = () => {
       checked: false,
       title: e.target[0].value,
     });
-    updateAndSaveTodos(newTodos);
+    setTodos(newTodos);
     setValue("");
   }
 
