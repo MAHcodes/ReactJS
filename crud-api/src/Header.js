@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 
 const Header = () => {
-    return <header>
+    return <header className="w-75 mx-auto">
         <ul className="nav nav-tabs justify-content-center" role="tab">
             <li className="nav-item">
                 <Link className="nav-link" to="/">Home</Link>

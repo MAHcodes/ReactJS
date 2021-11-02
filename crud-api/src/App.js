@@ -54,24 +54,35 @@ const App = () => {
     </Route>
     <Route path="/GET">
       <Get />
+      <Console 
+        consoleMessages={consoleMessages}
+        setConsoleMessages={setConsoleMessages}
+      />
     </Route>
     <Route path="/POST">
       <Post 
           handlePOST={handlePOST}
         />
+      <Console 
+        consoleMessages={consoleMessages}
+        setConsoleMessages={setConsoleMessages}
+      />
     </Route>
     <Route path="/PUT">
       <Put />
+      <Console 
+        consoleMessages={consoleMessages}
+        setConsoleMessages={setConsoleMessages}
+      />
     </Route>
     <Route path="/DELETE">
       <Delete />
+      <Console 
+        consoleMessages={consoleMessages}
+        setConsoleMessages={setConsoleMessages}
+      />
     </Route>
   </Switch>
-  <Console 
-    consoleMessages={consoleMessages}
-    setConsoleMessages={setConsoleMessages}
-  />
-
   </div>
 }
 
