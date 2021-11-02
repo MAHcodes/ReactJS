@@ -1,5 +1,23 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap');
 
-span, input:not([type="submit"]) {
+span, input:not([type="submit"]), .mono {
     font-family: 'Roboto Mono', monospace !important;
+}
+
+.console {
+    bottom: -52px !important;
+}
+
+.console .status-bar {
+    cursor: pointer;
+}
+
+.console .log {
+    height: 0;
+    max-height: 325px;
+    overflow-y: scroll;
+}
+
+.console.active .log  {
+    height: 100%;
 }
