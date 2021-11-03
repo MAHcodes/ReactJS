@@ -12,12 +12,13 @@ const App = () => {
 
   const [consoleMessages, setConsoleMessages] = useState([]);
   const [consoleIsActive, setConsoleIsActive] = useState(true);
-  const [userEndPoint, setUserEndPoint] = useState("");
+  const [userEndPoint, setUserEndPoint] = useState(sessionStorage.getItem("myEndpoint") || "");
   const [ifUserEnd, setIfUserEnd] = useState(false);
 
   const handleEndpoint = e => {
     e.preventDefault();
     setUserEndPoint(String(e.target.elements[0].value));
+    sessionStorage.setItem("myEndpoint", e.target.elements[0].value);
     setIfUserEnd(true);
   }
 
