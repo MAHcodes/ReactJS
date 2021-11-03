@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import Btn from "../Btn";
 import Code from "../Code";
 
-const Get = ({endpointEntities, getEntities, getData, endpointData, copyToClipboard}) => {
+const Get = ({endpointEntities, getEntities, getData, endpointData, copyToClipboard, loadingEntities}) => {
     useEffect(getEntities, [])
 
     return <div className="w-75 mx-auto">
@@ -13,7 +13,7 @@ const Get = ({endpointEntities, getEntities, getData, endpointData, copyToClipbo
                     return <Btn key={index} entity={entity} index={index} getData={getData} />
                 })}
                 </div>
-                {!!endpointEntities.length || <h3 className="lead text-center">Loading or No Entities</h3>}
+                {!!endpointEntities.length || <h3 className="lead text-center">{loadingEntities ? "Loading Entities..." : "No Entities"}</h3>}
             </div>
 
         <div className="w-75 mx-auto mt-4" style={{userSelect: "none"}}>

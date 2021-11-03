@@ -58,6 +58,7 @@ const App = () => {
   };
 
   const [endpointEntities, setEndpointEntities] = useState([]);
+  const [loadingEntities, setLoadingEntities] = useState(true);
   const getEntities = () => {
     fetch(API).then(res => {
       return res.json()
@@ -68,7 +69,9 @@ const App = () => {
       const newMessages = consoleMessages.concat([err.message]);
       setConsoleMessages(newMessages);
     }
-    );
+    ).finally(() => {
+      setLoadingEntities(false);
+    });
   }
 
   const [endpointData, setEndpointData] = useState([]);
@@ -114,6 +117,7 @@ const App = () => {
         getData={getData}
         endpointData={endpointData}
         copyToClipboard={copyToClipboard}
+        loadingEntities={loadingEntities}
       />
       <Console 
         consoleMessages={consoleMessages}

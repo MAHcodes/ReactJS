@@ -5,7 +5,7 @@ const Home = ({handleEndpoint, userEndPoint, setUserEndPoint, ifUserEnd, setIfUs
         <div className="my-5">
             <h3 className="my-2">CRUD API</h3>
             <hr />
-            <p className="mb-5 py-2">With the help of this web app you can use the <a href="https://crudcrud.com" target="_blank" rel="noreferrer">crudcrud.com</a> API without needing a single line of code.</p>
+            <p className="mb-5 py-2">With the help of this web app you can use the <a href="https://crudcrud.com" target="_blank" rel="noreferrer">crudcrud.com</a> API without writing a single line of code.</p>
 
             <h3 className="my-2">Usage</h3>
             <hr />
@@ -25,7 +25,7 @@ const Home = ({handleEndpoint, userEndPoint, setUserEndPoint, ifUserEnd, setIfUs
 
         <div className="my-5 d-flex pe-3">
             <p><span className="h2 me-2">3.</span>Now you can start with:</p>
-            <div className="d-flex flex-column px-3 pt-3"><span><Link to="/POST">POST</Link> to create new entities,</span><span><Link to="/GET">GET</Link> to get them,</span><span><Link to="/PUT">PUT</Link> to update them,</span><span><Link to="DELETE">DELETE</Link> to delete entities.</span></div>
+            <div className="d-flex flex-column px-3 pt-3"><span><Link to="/POST">POST</Link> to create new entities,</span><span><Link to="/GET">GET</Link> to read them,</span><span><Link to="/PUT">PUT</Link> to update them,</span><span><Link to="DELETE">DELETE</Link> to remove entities.</span></div>
         </div>
 
         <div className="py-4">
