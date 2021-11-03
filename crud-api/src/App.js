@@ -90,6 +90,9 @@ const App = () => {
 
   const copyToClipboard = e => {
       navigator.clipboard.writeText(e.target.parentElement.innerText)
+      setConsoleIsActive(true);
+      const newMessages = consoleMessages.concat([`Copied to clipboard: ${e.target.parentElement.innerText}`]);
+      setConsoleMessages(newMessages);
   }
 
   return <div className="container-md position-relative overflow-hidden" style={{minHeight: "100vh"}}>
