@@ -1,6 +1,6 @@
 import { AiOutlineCloseCircle } from 'react-icons/ai';
 
-const JsonInput = ({keyValue, setKeyValue, handleRemoveKey}) => {
+const JsonInput = ({keyValue, handleRemoveKey}) => {
     return (keyValue.map(item => {
         return <div className="text-center" id="jsonInput" key={item}>
             <span className="ms-4">"</span>

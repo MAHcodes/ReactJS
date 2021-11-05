@@ -32,7 +32,7 @@ const Home = ({handleEndpoint, userEndPoint, setUserEndPoint, ifUserEnd, setIfUs
             <h3 className="my-2">About</h3>
             <hr />
             <div className="d-flex">
-                <p>This is an <a href="https://github.com/mhmdali102/ReactJS/crud-api" target="_blank" rel="noreferrer">Open source app</a>, build by <a href="https://github.com/mhmdali102" target="_blank" rel="noreferrer">Mhmd Ali Hsen</a> with </p>
+                <p>This is an <a href="https://github.com/mhmdali102/ReactJS/tree/main/crud-api" target="_blank" rel="noreferrer">Open source app</a>, build by <a href="https://github.com/mhmdali102" target="_blank" rel="noreferrer">Mhmd Ali Hsen</a> with </p>
                 <ul className="mb-5">
                     <li><a href="https://reactjs.org" target="_blank" rel="noreferrer">ReactJS</a></li>
                     <li><a href="https://getbootstrap.com" target="_blank" rel="noreferrer">Bootstrap 5</a></li>

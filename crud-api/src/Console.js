@@ -1,7 +1,6 @@
 import { HiTrash } from 'react-icons/hi'
 import { AiOutlineCaretDown, AiOutlineCaretUp } from 'react-icons/ai'
 import { FiTerminal } from 'react-icons/fi';
-import { useEffect } from 'react';
 
 
 const Console = ({consoleMessages, setConsoleMessages, consoleIsActive, setConsoleIsActive}) => {

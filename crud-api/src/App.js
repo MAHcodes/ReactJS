@@ -98,6 +98,18 @@ const App = () => {
       setConsoleMessages(newMessages);
   }
 
+  const [keyValue, setKeyValue] = useState([1]);
+  const handleAddKey = (e) => {
+      e.preventDefault();
+      setKeyValue(keyValue.concat( [Math.max(...keyValue) + 1]));
+  };
+
+  const handleRemoveKey = (item) => {
+      const newItems = keyValue.filter(i => i !== item);
+      setKeyValue(newItems);
+  }
+
+
   return <div className="container-md position-relative overflow-hidden" style={{minHeight: "100vh"}}>
   <Header />
   <Switch>
@@ -129,6 +141,9 @@ const App = () => {
     <Route path="/POST">
       <Post 
           handlePOST={handlePOST}
+          keyValue={keyValue}
+          handleAddKey={handleAddKey}
+          handleRemoveKey={handleRemoveKey}
         />
       <Console 
         consoleMessages={consoleMessages}
@@ -138,7 +153,16 @@ const App = () => {
       />
     </Route>
     <Route path="/PUT">
-      <Put />
+      <Put 
+        endpointEntities={endpointEntities}
+        getData={getData}
+        loadingEntities={loadingEntities}
+        endpointData={endpointData}
+        keyValue={keyValue}
+        handleAddKey={handleAddKey}
+        handleRemoveKey={handleRemoveKey}
+        getEntities={getEntities}
+      />
       <Console 
         consoleMessages={consoleMessages}
         setConsoleMessages={setConsoleMessages}
