@@ -1,7 +1,6 @@
 import End from "../End";
 import JsonInput from "../JsonInput";
 import Start from "../Start";
-import { useState } from "react";
 
 const Post = ({handlePOST, keyValue, handleRemoveKey, handleAddKey}) => {
     
@@ -12,7 +11,7 @@ const Post = ({handlePOST, keyValue, handleRemoveKey, handleAddKey}) => {
             <JsonInput keyValue={keyValue}
                 handleRemoveKey={handleRemoveKey}
             />
-            <End handleAddKey={handleAddKey}/>
+            <End actionText= "Create" handleAddKey={handleAddKey}/>
         </div>
 
     </form>

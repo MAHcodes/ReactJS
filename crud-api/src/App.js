@@ -14,6 +14,7 @@ const App = () => {
   const [consoleIsActive, setConsoleIsActive] = useState(true);
   const [userEndPoint, setUserEndPoint] = useState(sessionStorage.getItem("myEndpoint") || "");
   const [ifUserEnd, setIfUserEnd] = useState(false);
+  const [endpointTitle, setEndpointTitle] = useState("");
 
   const handleEndpoint = e => {
     e.preventDefault();
@@ -78,6 +79,8 @@ const App = () => {
   const getData = (entity) => {
     const waitMessage = consoleMessages.concat([`Sending request please wait...`]);
     setConsoleMessages(waitMessage);
+    setEndpointTitle(entity);
+    console.log(endpointTitle)
     fetch(`${API}/${entity}`).then(res => {
       const newMessages = consoleMessages.concat([`${entity} ${res.statusText}... Status Code: ${res.status}`]);
       setConsoleMessages(newMessages);
@@ -162,6 +165,8 @@ const App = () => {
         handleAddKey={handleAddKey}
         handleRemoveKey={handleRemoveKey}
         getEntities={getEntities}
+        setKeyValue={setKeyValue}
+        endpointTitle={endpointTitle}
       />
       <Console 
         consoleMessages={consoleMessages}
