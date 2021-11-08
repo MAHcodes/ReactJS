@@ -1,0 +1,58 @@
+.imgContainer > img {
+    height: 75px;
+    width: 75px;
+    border-radius: 50%;
+    margin-top: .75em;
+}
+
+.bg {
+    background-color: #000;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.container {
+    display: flex;
+    min-height: 100vh;
+    padding-inline: 2rem;
+}
+
+.card {
+    margin: auto;
+    padding: 1.1rem;
+    background-color: #f8f8ff;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 0 0 max(100vh, 100vw) #00000099,
+    0 0 0 max(100vh, 100vw) #00000099,
+    0 0 0 max(100vh, 100vw) #00000060;
+}
+
+.card .form {
+    display: flex;
+    flex-direction: column;    
+    margin-top: 2rem;
+    /* min-width: 250px; */
+}
+
+.btn {
+    display: inline-block;
+    text-align: center;
+    padding: 1em;
+    background-color: #6560f7;
+    border-radius: 5px;
+    color: #f8f8ff;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+}
+
+#username {
+    padding: .85em;
+    margin-block: .75em;
+    border-radius: 5px;
+}
