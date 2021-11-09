@@ -1,0 +1,56 @@
+.container {
+    margin-block: 2rem;
+    display: flex;
+    justify-content: center;
+    background-color: var(--bg-secondary);
+    opacity: 0;
+    transform: rotateX(90deg) scale(0);
+    transform-origin: top;
+    animation: trailer 500ms ease-in forwards;
+    overflow: auto hidden;
+    border-radius: 5px;
+}
+
+.container::-webkit-scrollbar {
+    display: none;
+}
+
+body, 
+#root{
+    overflow: hidden;
+}
+
+.ytVideo {
+    width: 100%;
+    max-width: 720px;
+    aspect-ratio: 16/9;
+    border: none;
+    opacity: 0;
+    animation: show 0s 500ms forwards;
+}
+
+.movieImg {
+    max-height: 250px;
+    object-fit: contain;
+    opacity: 0;
+    animation: show 0s 500ms forwards;
+    border-radius: 5px;
+    margin-block: 1rem;
+}
+
+.movieImg + .movieImg{
+    margin-left: 1rem;
+}
+
+@keyframes show {
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes trailer {
+    to {
+        opacity: 1;
+        transform: rotateX(0deg) scale(1);
+    }
+}
