@@ -9,6 +9,7 @@
 
 .container {
   display: flex;
+  overflow: hidden;
 }
 
 .content {
@@ -22,6 +23,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    overflow: hidden;
 }
 
 .buttonsGroup .btn {
@@ -95,7 +97,8 @@
     top: 1px;
 }
 
-.mediaButtons button:hover {
+.mediaButtons button:hover,
+.mediaButtons button:active {
     box-shadow: 0 0 20px -8px var(--black);
 }
 

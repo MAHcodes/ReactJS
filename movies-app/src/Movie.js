@@ -9,29 +9,54 @@ import { IoPlay } from "react-icons/io5";
 import { BsFillStarFill } from "react-icons/bs";
 import Sidebar from "./Sidebar";
 import Trailer from "./Trailer";
+import Images from "./Images";
 
 const Movie = () => {
     let { id } = useParams();
     const API_KEY = process.env.REACT_APP_API_KEY;
-    const fetchURL = `/Title/${API_KEY}/${id}/FullActor,Posters,Images,Ratings`;
     const [movieData, setMovieData] = useState({});
+    const fetchURL = `/Title/${API_KEY}/${id}/FullActor,Posters,Images,Ratings`;
 
     useEffect(() => {
         async function fetchData() {
             const response = await axios.get(fetchURL);
             // setMovieData(response.data)
-            setMovieData(movieEndpoint)
-            console.log(movieData.id);
+            setMovieData(movieEndpoint)  // development
+            console.log(movieData);  // development 
         }
         fetchData();
-    }, [fetchURL])
+    }, [fetchURL]);
 
-    const [trailer, setTrailer] = useState(true);
+    const [trailerID, setTrailerID] = useState("");
+    const handleTrailer = (movieID) => {
+        if (!trailerID) {
+            async function fetchTrailer() {
+                const videoURL = `/YouTubeTrailer/${API_KEY}/${movieID}`;
+                const response = await axios.get(videoURL);
+                setTrailerID(response.data.videoId);
+                setImages(false);
+            }
+            fetchTrailer();
+        } else {
+            setTrailerID("");
+        }
+        
+    };
 
+    const [images, setImages] = useState(false)
+    const handleImages = (imgList) => {
+        console.log(imgList)
+        if (!images) {
+            setImages(imgList);
+            setTrailerID("");
+        } else {
+            setImages(false);
+        }
+    }
 
     return <div className={classes.container}>
         <Sidebar />
-        <div style={{flex: 1}}>
+        <div style={{flex: 1, overflow: "hidden"}}>
             <div className={classes.banner} style={{backgroundImage: `url(${movieData.posters?.backdrops[0]?.link})` }}>
                 <div className={classes.content}>
                     <div className={classes.mainInfo}>
@@ -62,18 +87,22 @@ const Movie = () => {
 
             <div className={classes.moreInfo}>
                 <div className={classes.mediaButtons}>
-                    <button className={classes.watchBtn}>
+                    <button 
+                        className={classes.watchBtn}
+                        onClick={() => handleTrailer(movieData.id)} >
                         <IoPlay />
                         <span>Watch Trailer</span>
                     </button>
-                    <button className={classes.viewBtn}>
+                    <button className={classes.viewBtn}
+                        onClick={() => handleImages(movieData.images.items)}>
                         <MdPhotoSizeSelectActual /> 
                         <span>View Images</span>
                     </button>
                 </div>
 
-                {trailer && <Trailer videoID={movieData.id} />}
+                { trailerID && <Trailer videoID={trailerID} /> }
 
+                { images && <Images images={images} />}
             </div>
 
         </div>
