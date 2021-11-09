@@ -1,8 +1,8 @@
-import classes from "./Login.module.css";
+import classes from "./Profile.module.css";
 import bg from "./background.png";
 import { useNavigate } from "react-router-dom"
 
-const Login = ({username, setUsername}) => {
+const Profile = ({username, setUsername}) => {
     const navigate = useNavigate();
     return <div className={classes.bg} style={{backgroundImage: `url(${bg})`}}>
         <div className={classes.container}>
@@ -24,4 +24,4 @@ const Login = ({username, setUsername}) => {
     </div>
 }
 
-export default Login;
+export default Profile;

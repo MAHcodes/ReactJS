@@ -1,0 +1,139 @@
+.banner {
+    min-height: 200px;
+   height: 40vh;
+   background-size: cover;
+   background-position: center 60%;
+   display: flex;
+   align-items: flex-end;
+}
+
+.container {
+  display: flex;
+}
+
+.content {
+    background-image: linear-gradient(0, var(--black), transparent);
+    width: 100%;
+    padding: 1rem 2rem;
+    padding-top: 150px;
+}
+
+.mainInfo {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.buttonsGroup .btn {
+    background-color: transparent;
+    font-size: 1.5rem;
+    padding: .25em;
+    color: var(--white);
+    border: none;
+    cursor: pointer;
+    height: 100%;
+    display: inline-block;
+    opacity: .95;
+    position: relative;
+    top: 1px;
+    transition: transform 100ms ease-in;
+}
+
+.title {
+    font-size: 2.5rem;
+    letter-spacing: 2px;
+}
+
+.fillBtn {
+    display: none;
+}
+
+.buttonsGroup .btn:hover .outlineBtn,
+.btn.active > .outlineBtn {
+    display: none !important;
+}
+
+.buttonsGroup .btn:hover .fillBtn,
+.btn.active > .fillBtn {
+    display: inline-block !important;
+}
+
+.btn.active > .fillBtn {
+    color:  #f76060;
+}
+
+.buttonsGroup .btn:hover {
+    transform: scale(1.125);
+    opacity: 1;
+}
+
+.buttonsGroup .btn + .btn {
+    margin-left: 1rem;
+}
+
+.mediaButtons {
+    display: flex;
+    align-items: center;
+}
+
+.mediaButtons button {
+    padding: 1em 1.5em;
+    border-radius: 100vw;
+    cursor: pointer;
+    border: none;
+    color: var(--white);
+    transition: box-shadow 100ms ease-in;
+}
+
+.mediaButtons button + button {
+    margin-left: 1em;
+}
+
+.mediaButtons button span {
+    margin-left: .75em;
+    position: relative;
+    top: 1px;
+}
+
+.mediaButtons button:hover {
+    box-shadow: 0 0 20px -8px var(--black);
+}
+
+.mediaButtons .watchBtn {
+    background-color: var(--main-color);
+}
+
+.mediaButtons .viewBtn {
+    background-color: #6560f736;
+}
+
+.moreInfo {
+    padding: 1.5rem 2rem;
+}
+
+.aboutMovie {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.mediaButtons button,
+.rate {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.star {
+    color: #f7db60;
+    margin-left: .5em;
+}
+
+.aboutMovie > p,
+.rating > p{
+    color: var(--text-gray);
+}
+
+.votes {
+    font-size: .75rem;
+}

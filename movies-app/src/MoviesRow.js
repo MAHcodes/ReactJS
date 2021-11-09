@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react/cjs/react.development";
 import endpointJson from "./top250movie.json";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const MoviesRow = ({title}) => {
     const [movies, setMovies] = useState([]);
+    const navigate = useNavigate();
 
     useEffect( () => {
         setMovies(endpointJson.items);
@@ -14,7 +15,7 @@ const MoviesRow = ({title}) => {
         <h3>{title}</h3>
         <div className="moviesRow">
             {movies.map(item => (
-                <div key={item.id} className="poster">
+                <div key={item.id} className="poster" onClick={() => navigate(`/${item.id}`)}>
                     <Link to={`/${item.id}`}>
                         <img loading="lazy" src={item.image} alt={item.fullTitle}  />
                     <div className="info">

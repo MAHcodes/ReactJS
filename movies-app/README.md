@@ -8,7 +8,9 @@
 ### Sidebar:
 0. Home
 0. icons : expandable
-0. 
+0. browse
+0. watchlist
+0. profile
 
 # need to learn axios
 

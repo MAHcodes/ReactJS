@@ -5,6 +5,14 @@
   src: url("./fonts/Nexa_Light.otf") ,url("./fonts/Nexa_Bold.otf");
 }
 
+:root {
+  --main-color: #6560f7;
+  --white: #f8f8ff;
+  --black: #090705;
+  --bg-color: #2d3244;
+  --text-gray: #a8b0be;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -14,17 +22,17 @@
 }
 
 *::selection {
-  background-color: #6560f7;
-  color: #f8f8ff;
+  background-color: var(--main-color);
+  color: var(--white);
 }
 
 body {
-  background-color: #2d3244;
-  color: #f8f8ff;
+  background-color: var(--bg-color);
+  color: var(--white);
 }
 
 .textDark {
-  color: #090705;
+  color: var(--black);
 }
 
 .light {
@@ -64,16 +72,17 @@ body {
 .info {
   position: absolute;
   inset: 0;
-  background-color: #090705d0;
+  background-color: #090705d7;
   opacity: 0;
   padding: .5em;
-  transition: opacity 200ms ease-in;
+  transition: opacity 225ms ease-in;
   text-align: center;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
   color: #f8f8ff;
+  border-radius: 5px;
 }
 
 .moviesRow > .poster + .poster {
