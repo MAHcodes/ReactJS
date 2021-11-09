@@ -15,7 +15,7 @@ const Login = ({username, setUsername}) => {
                     localStorage.setItem("username", JSON.stringify(username));
                     navigate("/");
                     } }>
-                    <label className="light" htmlFor="username">Enter Your Name:</label>
+                    <label className="light textDark" htmlFor="username">Enter Your Name:</label>
                     <input required autoFocus placeholder="John Smith" id={classes.username} type="text" onChange={ (e) => setUsername(e.target.value.trim()) } />
                     <input className={classes.btn} type="submit" value="Get Started!" />
                 </form>
