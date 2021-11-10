@@ -1,8 +1,8 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { useState } from "react";
-import Profile from "./Profile";
-import Home from "./Home";
-import Movie from "./Movie";
+import Profile from "./routes/Profile";
+import Home from "./routes/Home";
+import Movie from "./routes/Movie";
 
 function App() {
   const [username, setUsername] = useState(localStorage.getItem("username") || "");
@@ -18,7 +18,7 @@ function App() {
             element={<Profile username={username} setUsername={setUsername} />}
           />
           <Route path="/:id"
-            element={<Movie />}
+            element={<Movie username={username} />}
           />
       </Routes>
     </BrowserRouter>

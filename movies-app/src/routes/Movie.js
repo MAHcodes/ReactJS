@@ -1,17 +1,17 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import movieEndpoint from "./title.json";
-import axios from "./request";
+import movieEndpoint from "../assets/title.json"; // development
+import axios from "../api/request";
 import classes from "./Movie.module.css";
 import { MdFavoriteBorder, MdFavorite, MdPhotoSizeSelectActual } from "react-icons/md";
 import { HiOutlineShare, HiShare } from "react-icons/hi";
 import { IoPlay } from "react-icons/io5";
 import { BsFillStarFill } from "react-icons/bs";
-import Sidebar from "./Sidebar";
-import Trailer from "./Trailer";
-import Images from "./Images";
+import Sidebar from "../components/Sidebar";
+import Trailer from "../components/Trailer";
+import Images from "../components/Images";
 
-const Movie = () => {
+const Movie = ({username}) => {
     let { id } = useParams();
     const API_KEY = process.env.REACT_APP_API_KEY;
     const [movieData, setMovieData] = useState({});
@@ -33,7 +33,8 @@ const Movie = () => {
             async function fetchTrailer() {
                 const videoURL = `/YouTubeTrailer/${API_KEY}/${movieID}`;
                 const response = await axios.get(videoURL);
-                setTrailerID(response.data.videoId);
+                setTrailerID('hdxh9GUA-4A'); // development
+                // setTrailerID(response.data.videoId);
                 setImages(false);
             }
             fetchTrailer();
@@ -52,10 +53,10 @@ const Movie = () => {
         } else {
             setImages(false);
         }
-    }
+    };
 
     return <div className={classes.container}>
-        <Sidebar />
+        <Sidebar username={username} />
         <div style={{flex: 1, overflow: "hidden"}}>
             <div className={classes.banner} style={{backgroundImage: `url(${movieData.posters?.backdrops[0]?.link})` }}>
                 <div className={classes.content}>
@@ -73,13 +74,13 @@ const Movie = () => {
                         </div>
                     </div>
                     <div className={classes.aboutMovie}>
-                        <p>{`${movieData.year} • ${movieData.genres} • ${movieData.runtimeStr}`}</p>
+                        <p>{`${movieData.contentRating || "Content Rating"} • ${movieData.year || "Year"} • ${movieData.genres || "Genres"} • ${movieData.runtimeStr || "Duation"}`}</p>
                         <div className={classes.rating}>
                             <span className={classes.rate}>
-                                <p>{movieData.imDbRating}</p>
+                                <p>{movieData.imDbRating} <small>/10</small></p>
                                 <span className={classes.star}><BsFillStarFill /></span>
                             </span>
-                            <p className={classes.votes}>{(Number(movieData.imDbRatingVotes)).toLocaleString()} votes</p>
+                            <p className={classes.votes}>{(Number(movieData.imDbRatingVotes) || "").toLocaleString()} votes</p>
                         </div>
                     </div>
                 </div>
@@ -94,15 +95,23 @@ const Movie = () => {
                         <span>Watch Trailer</span>
                     </button>
                     <button className={classes.viewBtn}
-                        onClick={() => handleImages(movieData.images.items)}>
+                        onClick={() => handleImages(movieData.images?.items)}>
                         <MdPhotoSizeSelectActual /> 
                         <span>View Images</span>
                     </button>
                 </div>
+            </div>
 
-                { trailerID && <Trailer videoID={trailerID} /> }
+            { trailerID && <Trailer videoID={trailerID} /> }
 
-                { images && <Images images={images} />}
+            { images && <Images images={images} />}
+            { console.log(movieData)}
+
+            <div className={classes.moreInfo}>
+                <div className={classes.grid}>
+                    <h2>Plot</h2>
+                    <p>{movieData.plot}</p>
+                </div>
             </div>
 
         </div>

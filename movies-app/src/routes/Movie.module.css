@@ -1,6 +1,6 @@
 .banner {
     min-height: 200px;
-   height: 40vh;
+   height: 45vh;
    background-size: cover;
    background-position: center 60%;
    display: flex;
@@ -127,6 +127,10 @@
     justify-content: center;
 }
 
+small {
+    font-size: .75em;
+}
+
 .star {
     color: #f7db60;
     margin-left: .5em;
@@ -139,4 +143,19 @@
 
 .votes {
     font-size: .75rem;
+}
+
+.grid {
+    display: grid;
+}
+
+.grid h2 {
+    text-transform: uppercase;
+    font-weight: lighter;
+    margin-block: .5em;
+}
+
+.grid p {
+    color: var(--text-gray);
+    opacity: .8;
 }

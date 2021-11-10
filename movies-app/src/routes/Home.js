@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
-import MoviesRow from "./MoviesRow";
-import Sidebar from "./Sidebar";
+import MoviesRow from "../components/MoviesRow";
+import Sidebar from "../components/Sidebar";
 import classes from "./Home.module.css";
 
 const Home = ({username}) => {
@@ -14,7 +14,7 @@ const Home = ({username}) => {
         }
     }, [username, navigate])
     return <div className={`${classes.container}`}>
-        <Sidebar />
+        <Sidebar username={username} />
         <div className={"main"}>
             <MoviesRow title="Top 250 Movie" />
             <MoviesRow title="Top 250 Movie" />

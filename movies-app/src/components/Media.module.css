@@ -1,14 +1,13 @@
 .container {
-    margin-block: 2rem;
+    margin-top: 2rem;
     display: flex;
-    justify-content: center;
     background-color: var(--bg-secondary);
     opacity: 0;
     transform: rotateX(90deg) scale(0);
     transform-origin: top;
-    animation: trailer 500ms ease-in forwards;
+    animation: trailer 500ms ease-in-out forwards;
     overflow: auto hidden;
-    border-radius: 5px;
+    scroll-behavior: smooth;
 }
 
 .container::-webkit-scrollbar {
@@ -17,29 +16,31 @@
 
 body, 
 #root{
-    overflow: hidden;
+    overflow: hidden auto;
 }
 
 .ytVideo {
     width: 100%;
-    max-width: 720px;
+    max-width: 800px;
     aspect-ratio: 16/9;
     border: none;
     opacity: 0;
     animation: show 0s 500ms forwards;
+    margin-inline: auto;
 }
 
 .movieImg {
-    max-height: 250px;
+    max-height: 300px;
     object-fit: contain;
     opacity: 0;
     animation: show 0s 500ms forwards;
     border-radius: 5px;
     margin-block: 1rem;
+    margin-left: 1rem;
 }
 
-.movieImg + .movieImg{
-    margin-left: 1rem;
+.movieImg:last-of-type {
+    margin-right: 1rem;
 }
 
 @keyframes show {

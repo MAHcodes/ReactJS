@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react/cjs/react.development";
-import endpointJson from "./top250movie.json";
+import endpointJson from "../assets/top250movie.json";
 import { Link, useNavigate } from "react-router-dom";
 
 const MoviesRow = ({title}) => {

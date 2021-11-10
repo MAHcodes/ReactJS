@@ -2,7 +2,7 @@
 
 @font-face {
   font-family: "Nexa";
-  src: url("./fonts/Nexa_Light.otf") ,url("./fonts/Nexa_Bold.otf");
+  src: url("./assets/fonts/Nexa_Light.otf") ,url("./assets/fonts/Nexa_Bold.otf");
 }
 
 :root {

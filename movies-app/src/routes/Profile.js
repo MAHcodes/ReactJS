@@ -1,5 +1,5 @@
 import classes from "./Profile.module.css";
-import bg from "./background.png";
+import bg from "../assets/background.png";
 import { useNavigate } from "react-router-dom"
 
 const Profile = ({username, setUsername}) => {
