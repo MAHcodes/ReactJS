@@ -147,15 +147,112 @@ small {
 
 .grid {
     display: grid;
+    grid-gap: 3rem;
+    grid-template-columns: repeat(auto-fill, minmax(calc(90vw/ 4), 1fr));
+
 }
 
-.grid h2 {
+.grid .plot,
+.cast {
+    grid-column: 1/-1;
+}
+
+.release, .writer, .director {
+    grid-column: 1/2;
+}
+
+.more {
+    grid-column: 2/-1;
+    grid-row: 2/span 3;
+    justify-self: center;
+}
+
+h2, .h2 {
     text-transform: uppercase;
     font-weight: lighter;
     margin-block: .5em;
+    letter-spacing: 1.5px;
+    font-weight: normal;
+}
+
+.h2 {
+    font-size: 1.75rem;
 }
 
 .grid p {
     color: var(--text-gray);
     opacity: .8;
+}
+
+.grid p + p {
+    margin-top: .75em;
+}
+
+.grid p > span {
+    color: var(--white);
+    margin-right: .5em;
+}
+
+.actors {
+    display: flex;
+    overflow: auto hidden;
+}
+
+.actors::-webkit-scrollbar {
+    display: none;
+}
+
+.card {
+    background-color: var(--bg-secondary);
+    border-radius: 6px;
+    display: flex;
+    flex-direction: column;
+}
+
+.card p {
+    padding-inline: .5em;
+    text-align: center;
+    margin-block: auto;
+    color: var(--white);
+    text-decoration: none;
+}
+
+.card + .card {
+    margin-left: .5rem;
+}
+
+.card img {
+    height: 200px;
+    width: 150px;
+    border-radius: 5px 5px 0 0;
+    object-fit: cover;
+    user-select: none;
+}
+
+.card:hover img {
+    opacity: .75;
+}
+
+details > details,
+details > ul {
+    margin-left: 3rem;
+}
+
+ul li {
+    list-style: none;
+    margin-top: .5em;
+    color: var(--text-gray);
+}
+
+li a {
+    color: var(--text-gray);
+    transition: color 100ms ease-in;
+}
+
+li a:hover {
+    color: var(--white);
+}
+
+details + details {
+    margin-top: 2em;
 }

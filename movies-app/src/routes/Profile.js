@@ -8,7 +8,7 @@ const Profile = ({username, setUsername}) => {
         <div className={classes.container}>
             <div className={classes.card}>
                 <div className={classes.imgContainer}>
-                    <img src={`https://avatars.dicebear.com/api/adventurer-neutral/${username}.svg`} alt="Avatar" />
+                    <img src={`https://avatars.dicebear.com/api/adventurer-neutral/${username}.svg?mood[]=happy`} alt="Avatar" />
                 </div>
                 <form className={classes.form} autoComplete="off" onSubmit={e => {
                     e.preventDefault();

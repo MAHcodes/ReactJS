@@ -34,7 +34,7 @@ aside {
 .box p > a {
     color: var(--text-gray);
     text-decoration: none;
-    opacity: .5;
+    opacity: .6;
     transition: opacity 100ms ease-in;
 }
 

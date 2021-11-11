@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-import movieEndpoint from "../assets/title.json"; // development
+import { Link, useParams } from "react-router-dom";
+import movieEndpoint from "../assets/movie.json"; // development
 import axios from "../api/request";
 import classes from "./Movie.module.css";
 import { MdFavoriteBorder, MdFavorite, MdPhotoSizeSelectActual } from "react-icons/md";
@@ -22,7 +22,6 @@ const Movie = ({username}) => {
             const response = await axios.get(fetchURL);
             // setMovieData(response.data)
             setMovieData(movieEndpoint)  // development
-            console.log(movieData);  // development 
         }
         fetchData();
     }, [fetchURL]);
@@ -46,7 +45,6 @@ const Movie = ({username}) => {
 
     const [images, setImages] = useState(false)
     const handleImages = (imgList) => {
-        console.log(imgList)
         if (!images) {
             setImages(imgList);
             setTrailerID("");
@@ -105,12 +103,68 @@ const Movie = ({username}) => {
             { trailerID && <Trailer videoID={trailerID} /> }
 
             { images && <Images images={images} />}
-            { console.log(movieData)}
+            { console.log(movieData.similars)}
 
-            <div className={classes.moreInfo}>
-                <div className={classes.grid}>
+            <div className={`${classes.moreInfo} ${classes.grid}`}>
+                <div className={classes.plot}>
                     <h2>Plot</h2>
                     <p>{movieData.plot}</p>
+                </div>
+                <div className={classes.director}>
+                    <h2>Director</h2>
+                    <p>{movieData.directors}</p>
+                </div>
+                <div className={classes.writer}>
+                    <h2>Writer</h2>
+                    <p>{movieData.writers}</p>
+                </div>
+                <div className={classes.release}>
+                    <h2>Release Date</h2>
+                    <p>{movieData.releaseDate}</p>
+                </div>
+                <div className={classes.more}>
+                    <h2>More</h2>
+                    <p><span>Type: </span>{movieData.type}</p>
+                    <p><span>Countries: </span>{movieData.countries}</p>
+                    <p><span>Languages: </span>{movieData.languages}</p>
+                    <p><span>Stars: </span>{movieData.stars}</p>
+                    <p><span>Companies: </span>{movieData.companies}</p>
+                    <p><span>Budget:</span> {movieData.boxOffice?.budget}</p>
+                    <p><span>Cumulative World Wide Gross:</span> {movieData.boxOffice?.cumulativeWorldwideGross}</p>
+                </div>
+                <div className={classes.cast}>
+                    <details>
+                        <summary className={classes.h2}>Cast</summary>
+                        {movieData.fullCast?.others.map((item, index) => (
+                            <details key={index}>
+                                <summary>{item.job}</summary>
+                                <ul>{item.items.map((person, i) => (
+                                    <li key={i}>
+                                        <Link to={`/people/${person.id}`} >{person.name}</Link> 
+                                        {person.description && ` (${person.description})`}
+                                    </li> 
+                                ))}</ul>
+                            </details>
+                        ))}
+                    </details>
+                </div>
+            </div>
+            <div className={classes.moreInfo}>
+                <h2>Actors</h2>
+                <div className={classes.actors}>
+                    {movieData.fullCast?.actors?.map(actor => (
+                        <div key={actor.id} className={classes.card}>
+                            <Link to={`/people/${actor.id}`} >
+                                <img loading="lazy" src={actor.image} alt={actor.name} />
+                                <p>{actor.name}</p>
+                            </Link>
+                        </div>
+                    ))}
+                </div>
+                <div className={classes.similar}>
+                    {movieData.similars?.map(movie => (
+                        ""
+                    ))}
                 </div>
             </div>
 
