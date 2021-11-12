@@ -2,3 +2,46 @@
   display: flex;
   overflow: hidden;
 }
+
+.flex {
+  display: flex;
+  align-items: flex-start;
+  padding: 1rem;
+  gap: 2rem;
+  overflow: hidden;
+}
+
+.overflow {
+  overflow: hidden auto;
+}
+
+.content {
+  flex-basis: 100%;
+}
+
+.content img {
+  flex-basis: 45%;
+  object-fit: contain;
+  border-radius: 5px;
+  user-select: none;
+}
+
+.content h2 {
+    margin-top: 0;
+    font-size: 1.75rem;
+}
+
+.content p {
+    color: var(--text-gray);
+    opacity: .8;
+}
+
+.content p + p {
+    margin-top: 1.5em;
+}
+
+.content p > span {
+    color: var(--white);
+    margin-right: .5em;
+}
+
