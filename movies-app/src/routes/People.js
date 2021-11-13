@@ -57,8 +57,7 @@ const People = () => {
             )}
           </div>
         </div>
-        <MoviesRow title="Known For" />
-        <MoviesRow title="Cast Movies" />
+        <MoviesRow title="Known For" moviesArray={peopleData.knownFor} />
       </div>
     </div>
   );

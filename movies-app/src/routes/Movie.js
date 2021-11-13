@@ -15,6 +15,7 @@ import Sidebar from "../components/Sidebar";
 import Trailer from "../components/Trailer";
 import Images from "../components/Images";
 import Loading from "../components/Loading";
+import MoviesRow from "../components/MoviesRow";
 
 const Movie = ({ username }) => {
   let { id } = useParams();
@@ -214,9 +215,9 @@ const Movie = ({ username }) => {
               </div>
             ))}
           </div>
-          <div className={classes.similar}>
-            {movieData.similars?.map((movie) => "")}
-          </div>
+        </div>
+        <div className={classes.similar}>
+          <MoviesRow title="Similar" moviesArray={movieData.similars} />
         </div>
       </div>
     </div>

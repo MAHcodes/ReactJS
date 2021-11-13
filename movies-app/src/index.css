@@ -1,8 +1,8 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;500&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;500&display=swap");
 
 @font-face {
   font-family: "Nexa";
-  src: url("./assets/fonts/Nexa_Light.otf") ,url("./assets/fonts/Nexa_Bold.otf");
+  src: url("./assets/fonts/Nexa_Light.otf"), url("./assets/fonts/Nexa_Bold.otf");
 }
 
 :root {
@@ -54,6 +54,10 @@ body {
   padding-inline: 1rem;
 }
 
+.container .row h2 {
+  padding-left: 1rem;
+}
+
 .main {
   overflow: hidden;
 }
@@ -68,6 +72,7 @@ body {
   height: 200px;
   object-fit: contain;
   position: relative;
+  margin-left: 0.75em;
 }
 
 .info {
@@ -75,7 +80,7 @@ body {
   inset: 0;
   background-color: #090705d7;
   opacity: 0;
-  padding: .5em;
+  padding: 0.5em;
   transition: opacity 225ms ease-in;
   text-align: center;
   display: flex;
@@ -84,10 +89,6 @@ body {
   justify-content: space-between;
   color: #f8f8ff;
   border-radius: 5px;
-}
-
-.moviesRow > .poster + .poster {
-  margin-left: .75em;
 }
 
 .moviesRow .poster:hover {

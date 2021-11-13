@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
-import MoviesRow from "../components/MoviesRow";
+import MoviesContainer from "../components/MoviesContainer";
 import Sidebar from "../components/Sidebar";
 import classes from "./Home.module.css";
 
@@ -17,12 +17,11 @@ const Home = ({ username }) => {
     <div className={`${classes.container}`}>
       <Sidebar username={username} />
       <div className={"main"}>
-        <MoviesRow title="Top 250 Movie" />
-        <MoviesRow title="Top 250 Movie" />
+        <MoviesContainer title="Top 250 Movie" />
+        <MoviesContainer title="Top 250 Movie" />
       </div>
     </div>
   );
 };
 
 export default Home;
-

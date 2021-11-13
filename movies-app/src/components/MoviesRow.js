@@ -1,36 +1,39 @@
-import { useEffect, useState } from "react/cjs/react.development";
-import endpointJson from "../assets/top250movie.json";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
-const MoviesRow = ({title}) => {
-    const [movies, setMovies] = useState([]);
-    const navigate = useNavigate();
-
-    useEffect( () => {
-        setMovies(endpointJson.items);
-    }, [])
-
-
-    return <div className="row">
-        <h3>{title}</h3>
-        <div className="moviesRow">
-            {movies.map(item => (
-                <div key={item.id} className="poster" onClick={() => navigate(`/${item.id}`)}>
-                    <Link to={`/${item.id}`}>
-                        <img loading="lazy" src={item.image} alt={item.fullTitle}  />
-                    <div className="info">
-                        <p>{item.fullTitle}</p>
-                        <span>
-                            <p style={{fontSize: ".75em"}}>Rank: {item.rank}</p>
-                            <p style={{fontSize: ".75em"}}>IMDB Rating: {item.imDbRating}</p>
-                        </span>
-                    </div>
-                    </Link>
+const MoviesRow = ({ title, moviesArray }) => {
+  const navigate = useNavigate();
+  return (
+    <div className="row">
+      <h2>{title}</h2>
+      <div className="moviesRow">
+        {moviesArray &&
+          moviesArray.map((item, index) => (
+            <div
+              key={index}
+              className="poster"
+              onClick={() => navigate(`/${item.id}`)}
+            >
+              <Link to={`/${item.id}`}>
+                <img loading="lazy" src={item.image} alt={item.fullTitle} />
+                <div className="info">
+                  <p>{item.fullTitle}</p>
+                  <span>
+                    {item.rank && (
+                      <p style={{ fontSize: ".75em" }}>Rank: {item.rank}</p>
+                    )}
+                    {item.imDbRating && (
+                      <p style={{ fontSize: ".75em" }}>
+                        IMDB Rating: {item.imDbRating}
+                      </p>
+                    )}
+                  </span>
                 </div>
-            ))
-            }
-        </div>
+              </Link>
+            </div>
+          ))}
+      </div>
     </div>
-}
+  );
+};
 
 export default MoviesRow;
