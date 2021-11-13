@@ -1,0 +1,22 @@
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+.loading {
+  width: 7rem;
+  height: 7rem;
+  border-radius: 50%;
+  border-style: solid;
+  border-color: var(--white) transparent var(--white) transparent;
+  border-width: 2px;
+  animation: rotate 750ms ease-in-out infinite;
+}
+
+@keyframes rotate {
+  to {
+    transform: rotateZ(360deg);
+  }
+}
