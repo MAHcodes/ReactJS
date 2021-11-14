@@ -5,8 +5,9 @@ import { useEffect, useState } from "react";
 import classes from "./People.module.css";
 import MoviesRow from "../components/MoviesRow";
 import Loading from "../components/Loading";
+import Header from "../components/Header";
 
-const People = () => {
+const People = ({ username, avatarType }) => {
   const [isLoading, setIsLoading] = useState(true);
   const { id } = useParams();
   const [peopleData, setPeopleData] = useState({});
@@ -19,47 +20,50 @@ const People = () => {
   if (isLoading) return <Loading />;
 
   return (
-    <div className={classes.container}>
-      <Sidebar />
-      <div className={classes.overflow}>
-        <div className={classes.flex}>
-          <div className="img">
-            <img src={peopleData.image} alt={peopleData.name} />
+    <>
+      <Header username={username} avatarType={avatarType} />
+      <div className={classes.container}>
+        <Sidebar />
+        <div className={classes.overflow}>
+          <div className={classes.flex}>
+            <div className="img">
+              <img src={peopleData.image} alt={peopleData.name} />
+            </div>
+            <div className={classes.content}>
+              <h2>{peopleData.name}</h2>
+              <p>{peopleData.summary}</p>
+              <p>
+                <span>Role: </span>
+                {peopleData.role}
+              </p>
+              <p>
+                <span>BirthDate: </span>
+                {peopleData.birthDate}
+              </p>
+              {peopleData.awards && (
+                <p>
+                  <span>Awards: </span>
+                  {peopleData.awards}
+                </p>
+              )}
+              {peopleData.deathDate && (
+                <p>
+                  <span>Awards: </span>
+                  {peopleData.deathDate}
+                </p>
+              )}
+              {peopleData.height && (
+                <p>
+                  <span>Height: </span>
+                  {peopleData.height}
+                </p>
+              )}
+            </div>
           </div>
-          <div className={classes.content}>
-            <h2>{peopleData.name}</h2>
-            <p>{peopleData.summary}</p>
-            <p>
-              <span>Role: </span>
-              {peopleData.role}
-            </p>
-            <p>
-              <span>BirthDate: </span>
-              {peopleData.birthDate}
-            </p>
-            {peopleData.awards && (
-              <p>
-                <span>Awards: </span>
-                {peopleData.awards}
-              </p>
-            )}
-            {peopleData.deathDate && (
-              <p>
-                <span>Awards: </span>
-                {peopleData.deathDate}
-              </p>
-            )}
-            {peopleData.height && (
-              <p>
-                <span>Height: </span>
-                {peopleData.height}
-              </p>
-            )}
-          </div>
+          <MoviesRow title="Known For" moviesArray={peopleData.knownFor} />
         </div>
-        <MoviesRow title="Known For" moviesArray={peopleData.knownFor} />
       </div>
-    </div>
+    </>
   );
 };
 

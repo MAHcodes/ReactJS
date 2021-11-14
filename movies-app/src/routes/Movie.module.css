@@ -1,10 +1,16 @@
 .banner {
-    min-height: 200px;
-   height: 45vh;
-   background-size: cover;
-   background-position: center 60%;
-   display: flex;
-   align-items: flex-end;
+  min-height: 200px;
+  height: 50vh;
+  background-size: cover;
+  background-position: center 60%;
+  display: flex;
+  align-items: flex-end;
+}
+
+.main {
+  flex: 1;
+  overflow: hidden;
+  padding-top: 4rem;
 }
 
 .container {
@@ -13,246 +19,248 @@
 }
 
 .content {
-    background-image: linear-gradient(0, var(--black), transparent);
-    width: 100%;
-    padding: 1rem 2rem;
-    padding-top: 150px;
+  background-image: linear-gradient(0, var(--black), transparent);
+  width: 100%;
+  padding: 1rem 2rem;
+  padding-top: 150px;
 }
 
 .mainInfo {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  overflow: hidden;
 }
 
 .buttonsGroup .btn {
-    background-color: transparent;
-    font-size: 1.5rem;
-    padding: .25em;
-    color: var(--white);
-    border: none;
-    cursor: pointer;
-    height: 100%;
-    display: inline-block;
-    opacity: .95;
-    position: relative;
-    top: 1px;
-    transition: transform 100ms ease-in;
+  background-color: transparent;
+  font-size: 1.5rem;
+  padding: 0.25em;
+  color: var(--white);
+  border: none;
+  cursor: pointer;
+  height: 100%;
+  display: inline-block;
+  opacity: 0.95;
+  position: relative;
+  top: 1px;
+  transition: transform 100ms ease-in;
 }
 
 .title {
-    font-size: 2.5rem;
-    letter-spacing: 2px;
+  font-size: 2.5rem;
+  letter-spacing: 2px;
 }
 
 .fillBtn {
-    display: none;
+  display: none;
 }
 
 .buttonsGroup .btn:hover .outlineBtn,
 .btn.active > .outlineBtn {
-    display: none !important;
+  display: none !important;
 }
 
 .buttonsGroup .btn:hover .fillBtn,
 .btn.active > .fillBtn {
-    display: inline-block !important;
+  display: inline-block !important;
 }
 
 .btn.active > .fillBtn {
-    color:  #f76060;
+  color: #f76060;
 }
 
 .buttonsGroup .btn:hover {
-    transform: scale(1.125);
-    opacity: 1;
+  transform: scale(1.125);
+  opacity: 1;
 }
 
 .buttonsGroup .btn + .btn {
-    margin-left: 1rem;
+  margin-left: 1rem;
 }
 
 .mediaButtons {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 }
 
 .mediaButtons button {
-    padding: 1em 1.5em;
-    border-radius: 100vw;
-    cursor: pointer;
-    border: none;
-    color: var(--white);
-    transition: box-shadow 100ms ease-in;
+  padding: 1em 1.5em;
+  border-radius: 100vw;
+  cursor: pointer;
+  border: none;
+  color: var(--white);
+  transition: box-shadow 100ms ease-in;
 }
 
 .mediaButtons button + button {
-    margin-left: 1em;
+  margin-left: 1em;
 }
 
 .mediaButtons button span {
-    margin-left: .75em;
-    position: relative;
-    top: 1px;
+  margin-left: 0.75em;
+  position: relative;
+  top: 1px;
 }
 
 .mediaButtons button:hover,
 .mediaButtons button:active {
-    box-shadow: 0 0 20px -8px var(--black);
+  box-shadow: 0 0 20px -8px var(--black);
 }
 
 .mediaButtons .watchBtn {
-    background-color: var(--main-color);
+  background-color: var(--main-color);
 }
 
 .mediaButtons .viewBtn {
-    background-color: #6560f736;
+  background-color: #6560f736;
 }
 
 .moreInfo {
-    padding: 1.5rem 2rem;
+  padding: 1.5rem 2rem;
 }
 
 .aboutMovie {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .mediaButtons button,
 .rate {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 small {
-    font-size: .75em;
+  font-size: 0.75em;
 }
 
 .star {
-    color: #f7db60;
-    margin-left: .5em;
+  color: #f7db60;
+  margin-left: 0.5em;
 }
 
 .aboutMovie > p,
-.rating > p{
-    color: var(--text-gray);
+.rating > p {
+  color: var(--text-gray);
 }
 
 .votes {
-    font-size: .75rem;
+  font-size: 0.75rem;
 }
 
 .grid {
-    display: grid;
-    grid-gap: 3rem;
-    grid-template-columns: repeat(auto-fill, minmax(calc(90vw/ 4), 1fr));
-
+  display: grid;
+  grid-gap: 3rem;
+  grid-template-columns: repeat(auto-fill, minmax(calc(90vw / 4), 1fr));
 }
 
 .grid .plot,
 .cast {
-    grid-column: 1/-1;
+  grid-column: 1/-1;
 }
 
-.release, .writer, .director {
-    grid-column: 1/2;
+.release,
+.writer,
+.director {
+  grid-column: 1/2;
 }
 
 .more {
-    grid-column: 2/-1;
-    grid-row: 2/span 3;
-    justify-self: center;
+  grid-column: 2/-1;
+  grid-row: 2 / span 3;
+  justify-self: center;
 }
 
-h2, .h2 {
-    text-transform: uppercase;
-    font-weight: lighter;
-    margin-block: .5em;
-    letter-spacing: 1.5px;
-    font-weight: normal;
+h2,
+.h2 {
+  text-transform: uppercase;
+  font-weight: lighter;
+  margin-block: 0.5em;
+  letter-spacing: 1.5px;
+  font-weight: normal;
 }
 
 .h2 {
-    font-size: 1.75rem;
+  font-size: 1.75rem;
 }
 
 .grid p {
-    color: var(--text-gray);
-    opacity: .8;
+  color: var(--text-gray);
+  opacity: 0.8;
 }
 
 .grid p + p {
-    margin-top: .75em;
+  margin-top: 0.75em;
 }
 
 .grid p > span {
-    color: var(--white);
-    margin-right: .5em;
+  color: var(--white);
+  margin-right: 0.5em;
 }
 
 .actors {
-    display: flex;
-    overflow: auto hidden;
+  display: flex;
+  overflow: auto hidden;
 }
 
 .actors::-webkit-scrollbar {
-    display: none;
+  display: none;
 }
 
 .card {
-    background-color: var(--bg-secondary);
-    border-radius: 6px;
-    display: flex;
-    flex-direction: column;
+  background-color: var(--bg-secondary);
+  border-radius: 6px;
+  display: flex;
+  flex-direction: column;
 }
 
 .card p {
-    padding-inline: .5em;
-    text-align: center;
-    margin-block: auto;
-    color: var(--white);
-    text-decoration: none;
+  padding-inline: 0.5em;
+  text-align: center;
+  margin-block: auto;
+  color: var(--white);
+  text-decoration: none;
 }
 
 .card + .card {
-    margin-left: .5rem;
+  margin-left: 0.5rem;
 }
 
 .card img {
-    height: 200px;
-    width: 150px;
-    border-radius: 5px 5px 0 0;
-    object-fit: cover;
-    user-select: none;
+  height: 200px;
+  width: 150px;
+  border-radius: 5px 5px 0 0;
+  object-fit: cover;
+  user-select: none;
 }
 
 .card:hover img {
-    opacity: .75;
+  opacity: 0.75;
 }
 
 details > details,
 details > ul {
-    margin-left: 3rem;
+  margin-left: 3rem;
 }
 
 ul li {
-    list-style: none;
-    margin-top: .5em;
-    color: var(--text-gray);
+  list-style: none;
+  margin-top: 0.5em;
+  color: var(--text-gray);
 }
 
 li a {
-    color: var(--text-gray);
-    transition: color 100ms ease-in;
+  color: var(--text-gray);
+  transition: color 100ms ease-in;
 }
 
 li a:hover {
-    color: var(--white);
+  color: var(--white);
 }
 
 details + details {
-    margin-top: 2em;
+  margin-top: 2em;
 }

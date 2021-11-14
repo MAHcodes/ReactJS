@@ -9,9 +9,9 @@ const MoviesContainer = ({ title, endpoint }) => {
   useEffect(() => {
     console.log(endpoint);
     axios.get(endpoint).then((res) => {
-      setMovies(res.data.items.slice(0, 20));
+      //setMovies(res.data.items.slice(0, 20));
     });
-    //setMovies(endpointJson.items);
+    setMovies(endpointJson.items);
   }, [endpoint]);
 
   return (

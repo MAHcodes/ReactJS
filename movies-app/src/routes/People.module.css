@@ -13,6 +13,7 @@
 
 .overflow {
   overflow: hidden auto;
+  padding-top: 4.5rem;
 }
 
 .content {
@@ -27,21 +28,20 @@
 }
 
 .content h2 {
-    margin-top: 0;
-    font-size: 1.75rem;
+  margin-top: 0;
+  font-size: 1.75rem;
 }
 
 .content p {
-    color: var(--text-gray);
-    opacity: .8;
+  color: var(--text-gray);
+  opacity: 0.8;
 }
 
 .content p + p {
-    margin-top: 1.5em;
+  margin-top: 1.5em;
 }
 
 .content p > span {
-    color: var(--white);
-    margin-right: .5em;
+  color: var(--white);
+  margin-right: 0.5em;
 }
-

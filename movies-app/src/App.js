@@ -4,24 +4,47 @@ import Profile from "./routes/Profile";
 import Home from "./routes/Home";
 import Movie from "./routes/Movie";
 import People from "./routes/People";
-import Header from "./components/Header";
 
 function App() {
   const [username, setUsername] = useState(
-    localStorage.getItem("username") || ""
+    JSON.parse(localStorage.getItem("username")) || ""
   );
+
+  const [avatarType, setAvatarType] = useState(
+    JSON.parse(localStorage.getItem("avatarType")) || "adventurer-neutral"
+  );
+  const handleType = (e) => {
+    setAvatarType(e.target.value);
+    localStorage.setItem("avatarType", JSON.stringify(e.target.value));
+  };
 
   return (
     <BrowserRouter>
-      <Header />
       <Routes>
-        <Route path="/" exact element={<Home username={username} />} />
+        <Route
+          path="/"
+          exact
+          element={<Home username={username} avatarType={avatarType} />}
+        />
         <Route
           path="/profile"
-          element={<Profile username={username} setUsername={setUsername} />}
+          element={
+            <Profile
+              username={username}
+              setUsername={setUsername}
+              handleType={handleType}
+              avatarType={avatarType}
+            />
+          }
         />
-        <Route path="/:id" element={<Movie username={username} />} />
-        <Route path="/people/:id" element={<People />} />
+        <Route
+          path="/:id"
+          element={<Movie username={username} avatarType={avatarType} />}
+        />
+        <Route
+          path="/people/:id"
+          element={<People username={username} avatarType={avatarType} />}
+        />
       </Routes>
     </BrowserRouter>
   );

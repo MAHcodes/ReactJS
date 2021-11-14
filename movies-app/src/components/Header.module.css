@@ -7,24 +7,59 @@ header {
   padding: 1rem;
   padding-left: 16rem;
   display: flex;
+  justify-content: space-between;
   position: fixed;
   top: 0;
   right: 0;
   left: 0;
   z-index: 1000;
+  box-shadow: 0 3px 15px -5px var(--black);
 }
 
 form {
-  width: 100%;
+  width: 70%;
 }
 
 .search {
   background-color: var(--bg-secondary);
   border: none;
   border-bottom-color: var(--bg-color);
+  color: var(--white);
   border-bottom-style: solid;
   border-bottom-width: 1px;
   border-radius: 5px;
   padding: 0.5em 1em;
-  width: 50%;
+  width: 100%;
+}
+
+.profile p a {
+  word-wrap: none;
+  color: var(--white);
+  text-decoration: none;
+}
+
+.profile img {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+}
+
+.avatar,
+.profile,
+.nav,
+.fav {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+}
+
+.fav,
+.profile,
+.profile img {
+  margin-left: 1rem;
+}
+
+.fav svg {
+  width: 22.5px;
+  height: 22.5px;
 }
