@@ -1,0 +1,30 @@
+body {
+  position: relative;
+}
+
+header {
+  background-color: var(--bg-secondary);
+  padding: 1rem;
+  padding-left: 16rem;
+  display: flex;
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 1000;
+}
+
+form {
+  width: 100%;
+}
+
+.search {
+  background-color: var(--bg-secondary);
+  border: none;
+  border-bottom-color: var(--bg-color);
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-radius: 5px;
+  padding: 0.5em 1em;
+  width: 50%;
+}

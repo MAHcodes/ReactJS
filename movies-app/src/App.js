@@ -4,26 +4,24 @@ import Profile from "./routes/Profile";
 import Home from "./routes/Home";
 import Movie from "./routes/Movie";
 import People from "./routes/People";
+import Header from "./components/Header";
 
 function App() {
-  const [username, setUsername] = useState(localStorage.getItem("username") || "");
+  const [username, setUsername] = useState(
+    localStorage.getItem("username") || ""
+  );
 
   return (
     <BrowserRouter>
+      <Header />
       <Routes>
-          <Route path="/" exact 
-            element={<Home 
-              username={username}
-            />} />
-          <Route path="/profile"
-            element={<Profile username={username} setUsername={setUsername} />}
-          />
-          <Route path="/:id"
-            element={<Movie username={username} />}
-          />
-          <Route path="/people/:id"
-            element={<People />}
-          />
+        <Route path="/" exact element={<Home username={username} />} />
+        <Route
+          path="/profile"
+          element={<Profile username={username} setUsername={setUsername} />}
+        />
+        <Route path="/:id" element={<Movie username={username} />} />
+        <Route path="/people/:id" element={<People />} />
       </Routes>
     </BrowserRouter>
   );

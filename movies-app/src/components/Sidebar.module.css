@@ -1,5 +1,5 @@
 aside {
-  padding-inline: 7.5rem;
+  padding-inline: 7.25rem;
   background-color: var(--bg-secondary);
   position: relative;
   display: flex;
@@ -11,13 +11,22 @@ aside {
   position: fixed;
   left: 3rem;
   top: 3rem;
+  z-index: 1001;
+}
+
+.logo {
+  display: flex;
+}
+
+.logo a {
+  margin-inline: auto;
 }
 
 .content {
   margin-block: 0.75rem;
 }
 
-.box + .box {
+.box {
   margin-top: 3rem;
 }
 
@@ -41,4 +50,3 @@ aside {
 .box p > a:hover {
   opacity: 1;
 }
-

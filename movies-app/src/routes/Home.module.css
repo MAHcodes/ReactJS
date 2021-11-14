@@ -1,3 +1,9 @@
 .container {
   display: flex;
 }
+
+.main {
+  padding-top: 5rem;
+  overflow: hidden;
+}
+

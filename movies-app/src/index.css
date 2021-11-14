@@ -75,6 +75,16 @@ body {
   margin-left: 0.75em;
 }
 
+.showall {
+  color: var(--white);
+  text-decoration: none;
+  font-size: 0.9em;
+}
+
+.showall:hover {
+  text-decoration: underline;
+}
+
 .info {
   position: absolute;
   inset: 0;
@@ -102,4 +112,10 @@ body {
 .moviesRow img {
   border-radius: 5px;
   height: 100%;
+}
+
+.moviesRowTitle {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }

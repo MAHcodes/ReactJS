@@ -4,7 +4,12 @@ const MoviesRow = ({ title, moviesArray }) => {
   const navigate = useNavigate();
   return (
     <div className="row">
-      <h2>{title}</h2>
+      <div className="moviesRowTitle">
+        <h2>{title}</h2>
+        <Link to="/" className="showall">
+          show all
+        </Link>
+      </div>
       <div className="moviesRow">
         {moviesArray &&
           moviesArray.map((item, index) => (
