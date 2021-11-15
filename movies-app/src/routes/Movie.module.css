@@ -264,3 +264,7 @@ li a:hover {
 details + details {
   margin-top: 2em;
 }
+
+.similar {
+  padding-inline: 1rem;
+}

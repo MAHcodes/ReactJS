@@ -4,6 +4,7 @@ import Profile from "./routes/Profile";
 import Home from "./routes/Home";
 import Movie from "./routes/Movie";
 import People from "./routes/People";
+import Search from "./routes/Search";
 
 function App() {
   const [username, setUsername] = useState(
@@ -44,6 +45,10 @@ function App() {
         <Route
           path="/people/:id"
           element={<People username={username} avatarType={avatarType} />}
+        />
+        <Route
+          path="/search/:title"
+          element={<Search username={username} avatarType={avatarType} />}
         />
       </Routes>
     </BrowserRouter>

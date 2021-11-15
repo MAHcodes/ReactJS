@@ -11,6 +11,10 @@
   overflow: hidden;
 }
 
+.flex img {
+  max-width: 300px;
+}
+
 .overflow {
   overflow: hidden auto;
   padding-top: 4.5rem;
@@ -25,6 +29,7 @@
   object-fit: contain;
   border-radius: 5px;
   user-select: none;
+  width: 100%;
 }
 
 .content h2 {

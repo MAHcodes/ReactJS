@@ -24,23 +24,32 @@ const Home = ({ username, avatarType }) => {
           <MoviesContainer
             title="Top 250 Movie"
             endpoint={endpoints.top250movie}
+            more={true}
           />
-          <MoviesContainer title="Top 250 TV's" endpoint={endpoints.top250tv} />
+          <MoviesContainer
+            title="Top 250 TV's"
+            endpoint={endpoints.top250tv}
+            more={true}
+          />
           <MoviesContainer
             title="Most Popular Movies"
             endpoint={endpoints.mostPopularMovies}
+            more={true}
           />
           <MoviesContainer
             title="Most Popular TV's"
             endpoint={endpoints.mostPopularTvs}
+            more={true}
           />
           <MoviesContainer
             title="In Theaters"
             endpoint={endpoints.inTheaters}
+            more={true}
           />
           <MoviesContainer
             title="Coming Soon"
             endpoint={endpoints.comingSoon}
+            more={true}
           />
         </div>
       </div>

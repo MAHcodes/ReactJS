@@ -1,14 +1,16 @@
 import { useNavigate, Link } from "react-router-dom";
 
-const MoviesRow = ({ title, moviesArray }) => {
+const MoviesRow = ({ title, moviesArray, more }) => {
   const navigate = useNavigate();
   return (
     <div className="row">
       <div className="moviesRowTitle">
         <h2>{title}</h2>
-        <Link to="/" className="showall">
-          show all
-        </Link>
+        {more && (
+          <Link to="/" className="showall">
+            show all
+          </Link>
+        )}
       </div>
       <div className="moviesRow">
         {moviesArray &&

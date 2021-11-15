@@ -1,11 +1,21 @@
+import { useState } from "react";
 import classes from "./Header.module.css";
 import { MdFavorite } from "react-icons/md";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Header = ({ username, avatarType }) => {
+  const navigate = useNavigate();
+
+  const handleSearch = (e) => {
+    e.preventDefault();
+    console.log(e.target.children[0].value);
+    const searchValue = e.target.children[0].value;
+    navigate(`/search/${searchValue}`);
+  };
+
   return (
     <header>
-      <form>
+      <form onSubmit={handleSearch}>
         <input
           className={classes.search}
           type="search"

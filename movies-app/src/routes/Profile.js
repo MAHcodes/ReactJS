@@ -36,8 +36,12 @@ const Profile = ({ username, setUsername, handleType, avatarType }) => {
               type="text"
               onChange={(e) => setUsername(e.target.value.trim())}
             />
-            <select id={classes.avatarType} onChange={handleType}>
-              <option disabled selected>
+            <select
+              id={classes.avatarType}
+              defaultValue="default"
+              onChange={handleType}
+            >
+              <option disabled value="default">
                 Choose Avatar Type
               </option>
               <option value="adventurer">adventurer</option>

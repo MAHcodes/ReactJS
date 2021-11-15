@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import movieEndpoint from "../assets/title.json"; // development
 import axios from "../api/request";
 import classes from "./Movie.module.css";
 import {
@@ -22,15 +21,16 @@ const Movie = ({ username, avatarType }) => {
   let { id } = useParams();
   const API_KEY = process.env.REACT_APP_API_KEY;
   const [movieData, setMovieData] = useState({});
-  const fetchURL = `/Title/${API_KEY}/${id}/FullActor,Posters,Images,Ratings`;
+  const fetchURL = `/Title/${API_KEY}/${id}/FullActor,FullCast,Posters,Images,Ratings`;
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     setIsLoading(true);
+    console.log(fetchURL);
     async function fetchData() {
       const response = await axios.get(fetchURL);
-      // setMovieData(response.data)
-      setMovieData(movieEndpoint); // development
+      setMovieData(response.data);
+      //setMovieData(movieEndpoint); // development
       setIsLoading(false);
     }
     fetchData();
@@ -42,8 +42,8 @@ const Movie = ({ username, avatarType }) => {
       async function fetchTrailer() {
         const videoURL = `/YouTubeTrailer/${API_KEY}/${movieID}`;
         const response = await axios.get(videoURL);
-        setTrailerID("hdxh9GUA-4A"); // development
-        // setTrailerID(response.data.videoId);
+        setTrailerID("uNGmyQ8UbZ8"); // development
+        //setTrailerID(response.data.videoId);
         setImages(false);
       }
       fetchTrailer();
@@ -143,7 +143,6 @@ const Movie = ({ username, avatarType }) => {
             {trailerID && <Trailer videoID={trailerID} />}
 
             {images && <Images images={images} />}
-            {console.log(movieData.similars)}
 
             <div className={`${classes.moreInfo} ${classes.grid}`}>
               <div className={classes.plot}>
@@ -216,6 +215,7 @@ const Movie = ({ username, avatarType }) => {
             <div className={classes.moreInfo}>
               <h2>Actors</h2>
               <div className={classes.actors}>
+                {console.log({ movieData })}
                 {movieData.fullCast?.actors?.map((actor) => (
                   <div key={actor.id} className={classes.card}>
                     <Link to={`/people/${actor.id}`}>
@@ -227,7 +227,11 @@ const Movie = ({ username, avatarType }) => {
               </div>
             </div>
             <div className={classes.similar}>
-              <MoviesRow title="Similar" moviesArray={movieData.similars} />
+              <MoviesRow
+                title="Similar"
+                moviesArray={movieData.similars}
+                more={true}
+              />
             </div>
           </div>
         )}
