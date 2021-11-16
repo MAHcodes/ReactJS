@@ -50,3 +50,9 @@
   color: var(--white);
   margin-right: 0.5em;
 }
+
+.rowWrap > div {
+  overflow: auto;
+  flex-wrap: wrap;
+  flex-wrap: 1rem;
+}

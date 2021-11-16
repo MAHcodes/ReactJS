@@ -38,6 +38,7 @@ const Search = ({ username, avatarType }) => {
           <div className={classes.overflow}>
             <MoviesRow
               more={false}
+              wrap={false}
               title={`${title} Results:`}
               moviesArray={searchData}
             />

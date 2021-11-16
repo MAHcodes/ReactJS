@@ -1,6 +1,6 @@
 import { useNavigate, Link } from "react-router-dom";
 
-const MoviesRow = ({ title, moviesArray, more }) => {
+const MoviesRow = ({ title, moviesArray, more, wrap }) => {
   const navigate = useNavigate();
   return (
     <div className="row">
@@ -12,7 +12,7 @@ const MoviesRow = ({ title, moviesArray, more }) => {
           </Link>
         )}
       </div>
-      <div className="moviesRow">
+      <div className={`moviesRow ${!wrap ? "rowWrap" : ""}`}>
         {moviesArray &&
           moviesArray.map((item, index) => (
             <div
@@ -23,7 +23,7 @@ const MoviesRow = ({ title, moviesArray, more }) => {
               <Link to={`/${item.id}`}>
                 <img loading="lazy" src={item.image} alt={item.fullTitle} />
                 <div className="info">
-                  <p>{item.fullTitle}</p>
+                  <p>{item.fullTitle || item.title}</p>
                   <span>
                     {item.rank && (
                       <p style={{ fontSize: ".75em" }}>Rank: {item.rank}</p>
@@ -33,6 +33,7 @@ const MoviesRow = ({ title, moviesArray, more }) => {
                         IMDB Rating: {item.imDbRating}
                       </p>
                     )}
+                    {item.description && <p>{item.description}</p>}
                   </span>
                 </div>
               </Link>
