@@ -230,7 +230,7 @@ const Movie = ({ username, avatarType }) => {
               <MoviesRow
                 title="Similar"
                 moviesArray={movieData.similars}
-                more={true}
+                more={false}
               />
             </div>
           </div>

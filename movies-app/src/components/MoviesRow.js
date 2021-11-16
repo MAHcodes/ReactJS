@@ -1,18 +1,21 @@
 import { useNavigate, Link } from "react-router-dom";
 
-const MoviesRow = ({ title, moviesArray, more, wrap }) => {
+const MoviesRow = ({ title, moviesArray, more, wrap, endpoint }) => {
   const navigate = useNavigate();
+  const category = endpoint && endpoint.split("/")[0];
+
   return (
     <div className="row">
       <div className="moviesRowTitle">
         <h2>{title}</h2>
+        {console.log({ endpoint }, { category })}
         {more && (
-          <Link to="/" className="showall">
+          <Link to={`/all/${category}`} className="showall">
             show all
           </Link>
         )}
       </div>
-      <div className={`moviesRow ${!wrap ? "rowWrap" : ""}`}>
+      <div className={`moviesRow ${wrap ? "rowWrap" : ""}`}>
         {moviesArray &&
           moviesArray.map((item, index) => (
             <div

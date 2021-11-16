@@ -40,31 +40,28 @@ const Sidebar = ({ username }) => {
         <div className={classes.box}>
           <p className={classes.title}>Browse</p>
           <p>
-            <Link to={"/"}>Coming Soon</Link>
+            <Link to={"/all/ComingSoon"}>Coming Soon</Link>
           </p>
           <p>
-            <Link to={"/"}>In Theaters</Link>
-          </p>
-          <p>
-            <Link to={"/"}>Box Office</Link>
+            <Link to={"/all/InTheaters"}>In Theaters</Link>
           </p>
         </div>
         <div className={classes.box}>
           <p className={classes.title}>Most Popular</p>
           <p>
-            <Link to={"/"}>Movies</Link>
+            <Link to={"/all/MostPopularMovies"}>Movies</Link>
           </p>
           <p>
-            <Link to={"/"}>TV's</Link>
+            <Link to={"/all/MostPopularTvs"}>TV's</Link>
           </p>
         </div>
         <div className={classes.box}>
           <p className={classes.title}>Top 250</p>
           <p>
-            <Link to={"/"}>Movies</Link>
+            <Link to={"/all/Top250Movies"}>Movies</Link>
           </p>
           <p>
-            <Link to={"/"}>TV's</Link>
+            <Link to={"/all/Top250TVs"}>TV's</Link>
           </p>
         </div>
         <div className={classes.box}>
@@ -73,7 +70,7 @@ const Sidebar = ({ username }) => {
             <Link to={"/"}>My Favorites</Link>
           </p>
           <p>
-            <Link to={"/"}>Edit Profile</Link>
+            <Link to={"/profile"}>Edit Profile</Link>
           </p>
           <p>
             <Link to={"/"}>About</Link>

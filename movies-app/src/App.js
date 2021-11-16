@@ -50,6 +50,10 @@ function App() {
           path="/search/:title"
           element={<Search username={username} avatarType={avatarType} />}
         />
+        <Route
+          path="/all/:category"
+          element={<Search username={username} avatarType={avatarType} />}
+        />
       </Routes>
     </BrowserRouter>
   );
