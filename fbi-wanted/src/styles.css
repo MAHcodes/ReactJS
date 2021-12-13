@@ -1,0 +1,15 @@
+@font-face {
+  font-family: "Liberation Sans";
+  src: url("./assets/fonts/liberation-sans.regular.ttf") format("ttf");
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-family: "Liberation Sans", "Segoe UI", Tahoma, Geneva, Verdana,
+    sans-serif;
+}
