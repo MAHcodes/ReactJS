@@ -2,10 +2,12 @@ import { useEffect, useState } from "react";
 import useFetch from "./hooks/useFetch";
 
 const WantedContainer = () => {
-  //const api = "https://api.fbi.gov/wanted/v1/list";
-  const api = "https://api.adviceslip.com/advice";
+  //const api = "";
   const [list, setList] = useState([]);
-  const { data, error, isLoading } = useFetch(api);
+  const { data, error, isLoading } = useFetch(
+    "https://api.fbi.gov/wanted/v1/list",
+    JSON.stringify({ params: { page: 3 } })
+  );
 
   useEffect(() => {
     setList(JSON.stringify(data));
