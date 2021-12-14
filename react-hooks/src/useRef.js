@@ -15,7 +15,7 @@ const Ref = () => {
   return (
     <form onSubmit={updateUserName}>
       <h1 ref={userNameTitle}>{userName || "Submit Your Name"}</h1>
-      <input type="text" ref={userNameInput} placeholder="Username" />
+      <input type="text" ref={userNameInput} required placeholder="Username" />
       <input type="submit" />
     </form>
   );

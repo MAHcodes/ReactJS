@@ -1,9 +1,15 @@
-//import State from "./useState";
-//import Effect from "./useEffect";
+import State from "./useState";
+import Effect from "./useEffect";
 import Ref from "./useRef";
 
 function App() {
-  return <Ref />;
+  return (
+    <div>
+      <State />
+      <Effect />
+      <Ref />
+    </div>
+  );
 }
 
 export default App;

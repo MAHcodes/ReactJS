@@ -20,6 +20,10 @@ code {
   text-align: center;
 }
 
+#root > * > * {
+  margin-block: 10vh;
+}
+
 button,
 input {
   background-color: #ccc;

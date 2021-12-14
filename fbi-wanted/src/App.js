@@ -1,11 +1,11 @@
 import Header from "./Header";
-import WantedContainer from "./WantedContainer";
+import CardRow from "./components/CardRow";
 
 function App() {
   return (
     <div className="App">
       <Header />
-      <WantedContainer />
+      <CardRow />
     </div>
   );
 }

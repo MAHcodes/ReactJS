@@ -31,6 +31,8 @@ const StyledHeader = styled.header`
   background-color: #000d1c;
   color: #fff;
   padding: 0.5rem;
+  position: relative;
+  z-index: 3;
 `;
 
 const Logo = styled.img`

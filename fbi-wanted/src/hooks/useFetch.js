@@ -18,13 +18,13 @@ const useFetch = (URL, params) => {
           cancelToken: source.token,
         });
         if (isMounted) {
-          setData(response.data);
+          setData(response.data?.items);
           setError(null);
         }
-      } catch (error) {
+      } catch (err) {
         if (isMounted) {
-          console.error(error); // TODO DEVELOPMENT
-          setError(error.message);
+          console.log("errorrrrrrrr", err.message); // TODO DEVELOPMENT
+          setError(err.message);
           setData(null);
         }
       } finally {
