@@ -12,6 +12,7 @@ const Message = styled.div`
   color: red;
   width: fit-content;
   height: fit-content;
+  font-size: 2rem;
 `;
 
 export default Error;

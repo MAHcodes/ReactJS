@@ -23,7 +23,6 @@ const useFetch = (URL, params) => {
         }
       } catch (err) {
         if (isMounted) {
-          console.log("errorrrrrrrr", err.message); // TODO DEVELOPMENT
           setError(err.message);
           setData(null);
         }
