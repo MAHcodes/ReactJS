@@ -3,7 +3,7 @@ import styled from "styled-components";
 const Header = () => {
   return (
     <StyledHeader>
-      <Container>
+      <Container className="container">
         <Logo
           src="https://www.fbi.gov/++theme++fbigov.theme/images/fbi-seal-logo.png"
           alt="FBI logo"
@@ -15,8 +15,6 @@ const Header = () => {
 };
 
 const Container = styled.div`
-  max-width: 1280px;
-  margin-inline: auto;
   display: flex;
   align-items: center;
 `;

@@ -1,12 +1,11 @@
 import { useEffect, useState } from "react";
 import useFetch from "../hooks/useFetch";
-import json from "../list.json";
 import Card from "./Card";
 import Error from "./Error";
 import Loading from "./Loading";
 import styled from "styled-components";
 
-const CardRow = () => {
+const CardRow = ({ setWanted }) => {
   const [list, setList] = useState([]);
   const { data, error, isLoading } = useFetch(
     "https://api.fbi.gov/wanted/v1/list",
@@ -18,9 +17,7 @@ const CardRow = () => {
   }, [data]);
 
   return (
-    <Content>
-      <pre>{JSON.stringify(list, null, 2)}</pre>
-      {console.log("yo", error)}
+    <Content className="container">
       {isLoading ? (
         <Loading />
       ) : error ? (
@@ -34,6 +31,7 @@ const CardRow = () => {
             title={item.title}
             image={item.images[0].thumb}
             subject={item.subjects[0]}
+            setWanted={setWanted}
           />
         ))
       )}
@@ -41,6 +39,12 @@ const CardRow = () => {
   );
 };
 
-const Content = styled.div``;
+const Content = styled.div`
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  background-color: #ccc;
+  border: 1px solid #ccc;
+  grid-gap: 1px;
+`;
 
 export default CardRow;
