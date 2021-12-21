@@ -1,19 +1,19 @@
-import { useEffect, useState } from "react";
+import {useEffect, useState} from "react";
 import useFetch from "../hooks/useFetch";
 import Card from "./Card";
 import Error from "./Error";
 import Loading from "./Loading";
 import styled from "styled-components";
 
-const CardRow = ({ setWanted }) => {
+const CardRow = ({setWanted}) => {
   const [list, setList] = useState([]);
-  const { data, error, isLoading } = useFetch(
+  const {data, error, isLoading} = useFetch(
     "https://api.fbi.gov/wanted/v1/list",
-    JSON.stringify({ params: { page: 3 } })
+    JSON.stringify({params: {page: 3}})
   );
 
   useEffect(() => {
-    setList(data);
+    setList(data?.items);
   }, [data]);
 
   return (
@@ -23,7 +23,7 @@ const CardRow = ({ setWanted }) => {
       ) : error ? (
         <Error errMsg={error} />
       ) : (
-        list &&
+        Array.isArray(list) &&
         list.map((item) => (
           <Card
             key={item.uid}

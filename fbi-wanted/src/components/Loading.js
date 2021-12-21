@@ -1,4 +1,4 @@
-import styled, { keyframes } from "styled-components";
+import styled, {keyframes} from "styled-components";
 
 const Loading = () => {
   return (
@@ -11,14 +11,12 @@ const Loading = () => {
   );
 };
 
-const rotate = keyframes`
+const show = keyframes`
   from {
-    transform: translateY(20);
     opacity: 1;
   }
   to {
-    transform: translateY(-20px);
-    opacity: 0.25;
+    opacity: 0;
   }
 `;
 
@@ -38,10 +36,10 @@ const Waiting = styled.span`
   width: 15px;
   aspect-ratio: 1;
   border-radius: 50%;
-  animation: ${rotate} 0.5s infinite alternate ease-in-out;
+  animation: ${show} .5s infinite alternate ease-in-out;
 
   & + & {
-    margin-left: 0.25em;
+    margin-left: 0.5em;
   }
 
   &:nth-child(1) {

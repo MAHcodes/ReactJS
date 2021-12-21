@@ -1,7 +1,7 @@
-import { useState, useEffect } from "react";
+import {useState, useEffect} from "react";
 import axios from "axios";
 
-const useFetch = (URL, params) => {
+const useFetch = (URL, params = "{}") => {
   const [data, setData] = useState(null);
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
@@ -18,12 +18,14 @@ const useFetch = (URL, params) => {
           cancelToken: source.token,
         });
         if (isMounted) {
-          setData(response.data?.items);
+          setData(response?.data);
+          console.log(response.data.items); //TODO
           setError(null);
         }
       } catch (err) {
         if (isMounted) {
           setError(err.message);
+          console.log(err.message); //TODO
           setData(null);
         }
       } finally {
@@ -39,7 +41,7 @@ const useFetch = (URL, params) => {
     };
   }, [URL, params]);
 
-  return { data, error, isLoading };
+  return {data, error, isLoading};
 };
 
 export default useFetch;

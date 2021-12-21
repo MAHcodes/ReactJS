@@ -1,7 +1,7 @@
 import styled from "styled-components";
-import { useNavigate } from "react-router-dom";
+import {useNavigate} from "react-router-dom";
 
-const Card = ({ api, title, subject, image, setWanted }) => {
+const Card = ({api, title, subject, image, setWanted}) => {
   //<p>{api + title}</p>
   //<p>{subject}</p>
   const navigate = useNavigate();
