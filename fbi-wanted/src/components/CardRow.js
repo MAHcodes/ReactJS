@@ -5,7 +5,7 @@ import Error from "./Error";
 import Loading from "./Loading";
 import styled from "styled-components";
 
-const CardRow = ({setWanted}) => {
+const CardRow = () => {
   const [list, setList] = useState([]);
   const {data, error, isLoading} = useFetch(
     "https://api.fbi.gov/wanted/v1/list",
@@ -27,11 +27,10 @@ const CardRow = ({setWanted}) => {
         list.map((item) => (
           <Card
             key={item.uid}
-            api={item["@id"]}
+            uid={item.uid}
             title={item.title}
             image={item.images[0].thumb}
             subject={item.subjects[0]}
-            setWanted={setWanted}
           />
         ))
       )}

@@ -1,15 +1,14 @@
 import styled from "styled-components";
 import {useNavigate} from "react-router-dom";
 
-const Card = ({api, title, subject, image, setWanted}) => {
+const Card = ({uid, title, subject, image}) => {
   //<p>{api + title}</p>
   //<p>{subject}</p>
   const navigate = useNavigate();
   return (
     <StyledCard
       onClick={() => {
-        setWanted(api);
-        navigate(`/wanted/${title}`);
+        navigate(`/wanted/${uid}`);
       }}
     >
       <img src={image} alt={title} />
