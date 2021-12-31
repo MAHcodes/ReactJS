@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 const PageCtrl = ({ page, setPage }) => {
   return (
-    <Flex>
+    <Flex className="container">
       <p>Page: {page}</p>
       <StyledBtn
         title="Previous Page"

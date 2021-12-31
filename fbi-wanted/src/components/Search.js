@@ -10,7 +10,7 @@ const Search = ({ search, setSearch, setPage }) => {
   };
 
   return (
-    <SearchForm onSubmit={(e) => e.preventDefault()}>
+    <SearchForm className="container" onSubmit={(e) => e.preventDefault()}>
       <input
         ref={searchInput}
         onChange={handleSearch}

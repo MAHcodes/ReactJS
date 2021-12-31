@@ -13,7 +13,7 @@ const Card = ({ uid, title, subject, image }) => {
     >
       <img src={image} alt={title} />
       <Info>
-        <Hdr4>{title}</Hdr4>
+        <H4>{title}</H4>
         <p>{subject}</p>
       </Info>
     </StyledCard>
@@ -24,7 +24,7 @@ const Info = styled.div`
   text-align: center;
 `;
 
-const Hdr4 = styled.h4`
+const H4 = styled.h4`
   margin-block: 1em;
 `;
 
