@@ -1,15 +1,17 @@
-import {useEffect, useState} from "react";
+import { useEffect, useState } from "react";
 import useFetch from "../hooks/useFetch";
 import Card from "./Card";
 import Error from "./Error";
 import Loading from "./Loading";
 import styled from "styled-components";
+import PageCtrl from "./PageCtrl";
+import Search from "./Search";
 
-const CardRow = () => {
+const CardRow = ({ page, search, setSearch, setPage }) => {
   const [list, setList] = useState([]);
-  const {data, error, isLoading} = useFetch(
+  const { data, error, isLoading } = useFetch(
     "https://api.fbi.gov/wanted/v1/list",
-    JSON.stringify({params: {page: 3}})
+    JSON.stringify({ params: { page, title: search } })
   );
 
   useEffect(() => {
@@ -17,24 +19,29 @@ const CardRow = () => {
   }, [data]);
 
   return (
-    <Content className="container">
-      {isLoading ? (
-        <Loading />
-      ) : error ? (
-        <Error errMsg={error} />
-      ) : (
-        Array.isArray(list) &&
-        list.map((item) => (
-          <Card
-            key={item.uid}
-            uid={item.uid}
-            title={item.title}
-            image={item.images[0].thumb}
-            subject={item.subjects[0]}
-          />
-        ))
-      )}
-    </Content>
+    <>
+      <Search search={search} setSearch={setSearch} setPage={setPage} />
+      <Content className="container">
+        {isLoading ? (
+          <Loading />
+        ) : error ? (
+          <Error errMsg={error} />
+        ) : Array.isArray(list) && list.length ? (
+          list.map((item) => (
+            <Card
+              key={item.uid}
+              uid={item.uid}
+              title={item.title}
+              image={item.images[0].thumb}
+              subject={item.subjects[0]}
+            />
+          ))
+        ) : (
+          <Card subject={"No Results"} />
+        )}
+      </Content>
+      <PageCtrl page={page} setPage={setPage} />
+    </>
   );
 };
 

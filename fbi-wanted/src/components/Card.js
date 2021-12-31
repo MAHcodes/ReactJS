@@ -1,7 +1,7 @@
 import styled from "styled-components";
-import {useNavigate} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
-const Card = ({uid, title, subject, image}) => {
+const Card = ({ uid, title, subject, image }) => {
   //<p>{api + title}</p>
   //<p>{subject}</p>
   const navigate = useNavigate();
@@ -35,11 +35,10 @@ const StyledCard = styled.div`
   place-items: center;
   position: relative;
   cursor: pointer;
-  transition: box-shadow 0.25s ease-in-out, transform 0.25s ease-in-out;
+  transition: background-color 0.25s ease-in-out;
 
   &:hover {
-    transform: scale(1.025);
-    box-shadow: 0 0 40px -10px #000;
+    background-color: #ddd;
     border-radius: 6px;
     z-index: 2;
   }

@@ -1,14 +1,25 @@
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   return (
     <StyledHeader>
       <Container>
-        <Logo
-          src="https://www.fbi.gov/++theme++fbigov.theme/images/fbi-seal-logo.png"
-          alt="FBI logo"
-        />
-        <Title>Wanted by the FBI</Title>
+        <Link
+          style={{
+            display: "flex",
+            color: "white",
+            textDecoration: "none",
+            alignItems: "center",
+          }}
+          to="/"
+        >
+          <Logo
+            src="https://www.fbi.gov/++theme++fbigov.theme/images/fbi-seal-logo.png"
+            alt="FBI logo"
+          />
+          <Title>Wanted by the FBI</Title>
+        </Link>
       </Container>
     </StyledHeader>
   );
