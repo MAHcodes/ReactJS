@@ -1,0 +1,24 @@
+.search {
+  display: flex;
+  align-items: center;
+  padding: 0.75em 1em;
+  background-color: rgb(var(--bg-dark-2));
+  border-radius: 100vw;
+  color: rgb(var(--fg-dark-2));
+}
+
+.search .icon {
+  margin-right: 0.5em;
+}
+
+.search > input {
+  background-color: transparent;
+  color: rgb(var(--fg-dark));
+  font-size: 0.8rem;
+  border: none;
+  outline: none;
+}
+
+.search input:focus {
+  border: 1px solid rgb(var(--accent-color));
+}
