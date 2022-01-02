@@ -69,7 +69,7 @@ h6 {
 }
 
 :root {
-  --bg-dark: #000;
+  --bg-dark: 0, 0, 0;
   --bg-dark-2: 32, 35, 39, 1;
   --fg-dark: 255, 255, 255;
   --fg-dark-2: 217, 217, 217;
@@ -85,8 +85,8 @@ h6 {
 
 html {
   font-family: chirmp, sans-serif;
-  color: var(--fg-dark);
-  background-color: var(--bg-dark);
+  color: rgb(var(--fg-dark));
+  background-color: rgb(var(--bg-dark));
 }
 
 html,

@@ -1,4 +1,4 @@
-import Sidebar from "./components/Sidebar";
+import LeftSidebar from "./components/LeftSidebar";
 import { Route, Routes } from "react-router-dom";
 import Home from "./routes/Home";
 import RightSidebar from "./components/RightSidebar";
@@ -6,7 +6,7 @@ import RightSidebar from "./components/RightSidebar";
 function App() {
   return (
     <div className="container app">
-      <Sidebar />
+      <LeftSidebar />
       <Routes>
         <Route path="/" element={<Home />} />
       </Routes>

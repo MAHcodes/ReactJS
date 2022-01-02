@@ -1,5 +1,6 @@
 .home {
-  flex: 0.6;
+  flex: 0.5;
   border-right: 1px solid rgb(var(--bg-dark-2));
   border-left: 1px solid rgb(var(--bg-dark-2));
+  color: rgb(var(--fg-dark));
 }

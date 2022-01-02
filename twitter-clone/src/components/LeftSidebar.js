@@ -9,7 +9,7 @@ import { MdOutlineEmail, MdEmail } from "react-icons/md";
 import NavLink from "./NavLink";
 import { CgList, CgMoreO } from "react-icons/cg";
 import { FaUser, FaRegUser } from "react-icons/fa";
-import styles from "./Sidebar.module.css";
+import styles from "./LeftSidebar.module.css";
 import Account from "./Account";
 
 const Sidebar = () => {

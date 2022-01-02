@@ -5,10 +5,15 @@
   background-color: rgb(var(--bg-dark-2));
   border-radius: 100vw;
   color: rgb(var(--fg-dark-2));
+  border: 1px solid rgb(var(--bg-dark));
 }
 
 .search .icon {
   margin-right: 0.5em;
+}
+
+.search:focus-within .icon {
+  color: rgb(var(--accent-color));
 }
 
 .search > input {
@@ -19,6 +24,6 @@
   outline: none;
 }
 
-.search input:focus {
+.search:focus-within {
   border: 1px solid rgb(var(--accent-color));
 }
