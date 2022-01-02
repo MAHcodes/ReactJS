@@ -78,9 +78,9 @@ h6 {
 
 @font-face {
   font-family: chirmp;
-  src: url("./assets/fonts/chirp_regular.otf") format("otf"),
-    url("./assets/fonts//chirp_bold.otf") format("otf"),
-    url("./assets/fonts//chirp_light.otf") format("otf");
+  src: url("./assets/fonts/Chirp\ Web.ttf") format("ttf"),
+    url("./assets/fonts/Chirp\ Web\ Medium.ttf") format("ttf"),
+    url("./assets/fonts/Chirp\ Web\ Bold.ttf") format("ttf");
 }
 
 html {
