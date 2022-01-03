@@ -19,3 +19,19 @@
 .navLink > a p {
   margin-left: 1em;
 }
+
+.isActive > p {
+  font-weight: bold;
+}
+
+.filled {
+  display: none;
+}
+
+.isActive .outline {
+  display: none !important;
+}
+
+.isActive .filled {
+  display: block !important;
+}
