@@ -1,0 +1,78 @@
+.container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.main {
+  display: flex;
+  flex: 1;
+}
+
+.twitter {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  flex: 0.6;
+
+  background: rgb(var(--accent-color));
+  background: url("../assets/images/lohp_en_1302x955.png") no-repeat center;
+  background-size: cover;
+}
+
+.twitter > svg {
+  font-size: 22.5rem;
+}
+
+.signup {
+  flex: 0.475;
+  padding: 2.5rem;
+  letter-spacing: -1px;
+  color: rgb(var(--fg-dark-2));
+  align-self: center;
+}
+
+.buttons {
+  max-width: 315px;
+}
+
+.logo {
+  font-size: 3rem;
+  margin-bottom: 1.25em;
+}
+
+.title {
+  font-size: 4rem;
+  margin-block: 0.5em;
+  white-space: nowrap;
+}
+
+.subtitle {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+}
+
+.or {
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  font-size: 0.85rem;
+}
+
+.or hr {
+  color: rgba(var(--fg-dark-1), 0.5);
+  width: 100%;
+  height: 1px;
+}
+
+.terms {
+  font-size: 0.75rem;
+  color: rgb(var(--fg-dark-1));
+  line-height: 1.2;
+}
+
+.terms a {
+  color: rgb(var(--accent-color));
+  text-decoration: none;
+}

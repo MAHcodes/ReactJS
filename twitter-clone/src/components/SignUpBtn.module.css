@@ -1,0 +1,24 @@
+.btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  padding: 0.5em;
+  width: 100%;
+  border-radius: 100vw;
+  margin-block: 0.75em;
+  cursor: pointer;
+}
+
+.btn:hover {
+  opacity: 0.95;
+}
+
+.icon {
+  font-size: 1.25rem;
+  margin-inline-end: 0.5em;
+}
+
+.brdr {
+  border: 1px solid rgb(var(--fg-dark-1));
+}

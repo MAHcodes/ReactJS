@@ -6,26 +6,26 @@ import { UserContext } from "./hooks/UserContext";
 import { useMemo, useState } from "react";
 
 function App() {
-  const [user, setUser] = useState("Mhmd");
+  const [user, setUser] = useState("");
 
   const userValue = useMemo(() => ({ user, setUser }), [user, setUser]);
 
   return (
-    <div className="container app">
+    <>
       {!user ? (
         <UserContext.Provider value={userValue}>
           <SignUp />
         </UserContext.Provider>
       ) : (
-        <>
+        <div className="container app">
           <LeftSidebar />
           <UserContext.Provider value={userValue}>
             <Feed />
           </UserContext.Provider>
           <RightSidebar />
-        </>
+        </div>
       )}
-    </div>
+    </>
   );
 }
 
