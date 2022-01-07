@@ -23,6 +23,10 @@ const Footer = () => {
         </li>
         <li>
           {" "}
+          <Link to="#">Cookie Policy</Link>{" "}
+        </li>
+        <li>
+          {" "}
           <Link to="#">Accessibility</Link>{" "}
         </li>
         <li>

@@ -1,5 +1,5 @@
 .container {
-  max-width: 1600px;
+  max-width: 1700px;
   margin-inline: auto;
 }
 
@@ -10,7 +10,7 @@
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;
-  gap: 0.125em 1em;
+  gap: 0.125em 0.9em;
 }
 
 .links li > a {

@@ -6,6 +6,7 @@ import { FcGoogle } from "react-icons/fc";
 import SignUpBtn from "../components/SignUpBtn";
 import { Link } from "react-router-dom";
 import Footer from "../components/Footer";
+import { signInWithGoogle } from "../firebase";
 
 const SignUp = () => {
   const { user, setUser } = useContext(UserContext);
@@ -25,9 +26,8 @@ const SignUp = () => {
             <SignUpBtn
               Icon={FcGoogle}
               text="Sign up with Google"
-              bgColor="#222"
-              color="rgb(var(--fg-dark-2))"
-              border
+              bgColor="#FFF"
+              action={signInWithGoogle}
             />
             <SignUpBtn
               Icon={BsTwitter}
