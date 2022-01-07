@@ -5,8 +5,9 @@ import SignUpBtn from "../components/SignUpBtn";
 import { Link } from "react-router-dom";
 import Footer from "../components/Footer";
 import { signInWithEmail, signInWithGoogle } from "../firebase";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { UserContext } from "../hooks/UserContext";
+import Modal from "../components/Modal";
 
 const SignUp = () => {
   //const twitterBg =
@@ -32,6 +33,8 @@ const SignUp = () => {
   const handleEmailSignIn = () => {
     signInWithEmail("test@mail.com", "NOPASS").then((res) => console.log(res));
   };
+
+  const [modal, setModal] = useState(false);
 
   return (
     <div className={styles.container}>
@@ -65,7 +68,10 @@ const SignUp = () => {
               text="Sign up with email"
               bgColor="#FFF"
               color="#000"
-              action={handleEmailSignIn}
+              action={() => {
+                setModal({ ...modal, createAccWithEmail: true });
+              }}
+              bold
             />
             <p className={styles.terms}>
               By signing up, you agree to the{" "}
@@ -86,6 +92,7 @@ const SignUp = () => {
         </div>
       </div>
       <Footer />
+      {modal && <Modal modal={modal} setModal={setModal} />}
     </div>
   );
 };

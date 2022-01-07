@@ -1,0 +1,55 @@
+.modal {
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  max-width: 600px;
+  max-height: 650px;
+  border-radius: 20px;
+  background-color: rgb(var(--bg-dark));
+  z-index: 2;
+  animation: in 100ms ease-in-out;
+}
+
+@keyframes in {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(var(--overlay));
+  z-index: 1;
+}
+
+.close {
+  aspect-ratio: 1;
+  top: 0.3em;
+  left: 0.3em;
+  border-radius: 50%;
+  cursor: pointer;
+  padding: 0.1em;
+}
+
+.close:hover {
+  background-color: rgba(var(--fg-dark), 0.1);
+}
+
+.logo,
+.close {
+  position: absolute;
+  z-index: 3;
+  font-size: 2rem;
+  color: rgb(var(--fg-dark-2));
+}
+
+.logo {
+  inset: 0.25em 0 auto 0;
+  margin-inline: auto;
+}
