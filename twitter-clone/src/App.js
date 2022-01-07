@@ -3,25 +3,19 @@ import RightSidebar from "./components/RightSidebar";
 import Feed from "./components/Feed";
 import SignUp from "./routes/SignUp";
 import { UserContext } from "./hooks/UserContext";
-import { useMemo, useState } from "react";
+import { useContext } from "react";
 
 function App() {
-  const [user, setUser] = useState("");
-
-  const userValue = useMemo(() => ({ user, setUser }), [user, setUser]);
+  const { user } = useContext(UserContext);
 
   return (
     <>
       {!user ? (
-        <UserContext.Provider value={userValue}>
-          <SignUp />
-        </UserContext.Provider>
+        <SignUp />
       ) : (
         <div className="container app">
           <LeftSidebar />
-          <UserContext.Provider value={userValue}>
-            <Feed />
-          </UserContext.Provider>
+          <Feed />
           <RightSidebar />
         </div>
       )}

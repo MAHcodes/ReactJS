@@ -1,0 +1,24 @@
+.container {
+  max-width: 1600px;
+  margin-inline: auto;
+}
+
+.links {
+  list-style-type: none;
+  padding: 0.75em 2em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.125em 1em;
+}
+
+.links li > a {
+  color: rgb(var(--fg-dark-1));
+  text-decoration: none;
+  font-size: 0.8rem;
+}
+
+.links li > a:hover {
+  text-decoration: underline;
+}

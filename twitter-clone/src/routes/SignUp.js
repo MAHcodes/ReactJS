@@ -5,6 +5,7 @@ import { BsTwitter } from "react-icons/bs";
 import { FcGoogle } from "react-icons/fc";
 import SignUpBtn from "../components/SignUpBtn";
 import { Link } from "react-router-dom";
+import Footer from "../components/Footer";
 
 const SignUp = () => {
   const { user, setUser } = useContext(UserContext);
@@ -24,7 +25,9 @@ const SignUp = () => {
             <SignUpBtn
               Icon={FcGoogle}
               text="Sign up with Google"
-              bgColor="#FFF"
+              bgColor="#222"
+              color="rgb(var(--fg-dark-2))"
+              border
             />
             <SignUpBtn
               Icon={BsTwitter}
@@ -45,22 +48,18 @@ const SignUp = () => {
               <Link to="#">Cookie Use</Link>.
             </p>
 
-            <h3>Already have and account?</h3>
+            <h3 className={styles.login}>Already have and account?</h3>
             <SignUpBtn
               text="Sign In"
               bgColor="transparent"
               color="rgb(var(--accent-color))"
               border
+              bold
             />
           </div>
         </div>
       </div>
-      <div className={styles.links}>
-        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quidem aperiam
-        vitae eius et doloribus iusto sequi, deserunt velit cupiditate adipisci
-        tenetur dolorum, inventore sapiente, officiis sit. Officiis enim totam
-        non.
-      </div>
+      <Footer />
     </div>
   );
 };

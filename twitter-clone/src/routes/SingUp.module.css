@@ -10,11 +10,11 @@
 }
 
 .twitter {
+  flex: 0.6;
+
   display: flex;
   align-items: center;
   justify-content: center;
-
-  flex: 0.6;
 
   background: rgb(var(--accent-color));
   background: url("../assets/images/lohp_en_1302x955.png") no-repeat center;
@@ -64,6 +64,12 @@
   color: rgba(var(--fg-dark-1), 0.5);
   width: 100%;
   height: 1px;
+}
+
+.login {
+  margin-top: 4em;
+  margin-bottom: 1em;
+  font-size: 1rem;
 }
 
 .terms {
