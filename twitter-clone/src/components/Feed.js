@@ -1,5 +1,5 @@
 import styles from "./Feed.module.css";
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, Navigate } from "react-router-dom";
 import Home from "../routes/Home";
 import Explore from "../routes/Explore";
 import Notifications from "../routes/Notifications";
@@ -12,6 +12,7 @@ const Feed = () => {
   return (
     <div className={styles.feed}>
       <Routes>
+        <Route path="/*" element={<Navigate replace to="/home" />} />
         <Route path="/home" element={<Home />} />
         <Route path="/explore" element={<Explore />} />
         <Route path="/notifications" element={<Notifications />} />

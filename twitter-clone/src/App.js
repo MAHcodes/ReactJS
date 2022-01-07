@@ -4,9 +4,15 @@ import Feed from "./components/Feed";
 import SignUp from "./routes/SignUp";
 import { UserContext } from "./hooks/UserContext";
 import { useContext } from "react";
+import { useEffect } from "react";
 
 function App() {
-  const { user } = useContext(UserContext);
+  const { user, setUser } = useContext(UserContext);
+
+  useEffect(() => {
+    localStorage.getItem("twitter-clone") &&
+      setUser(JSON.parse(localStorage.getItem("twitter-clone")));
+  }, [setUser]);
 
   return (
     <>

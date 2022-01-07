@@ -1,17 +1,38 @@
-import { useContext } from "react";
-import { UserContext } from "../hooks/UserContext";
 import styles from "./SingUp.module.css";
 import { BsTwitter } from "react-icons/bs";
 import { FcGoogle } from "react-icons/fc";
 import SignUpBtn from "../components/SignUpBtn";
 import { Link } from "react-router-dom";
 import Footer from "../components/Footer";
-import { signInWithGoogle } from "../firebase";
+import { signInWithEmail, signInWithGoogle } from "../firebase";
+import { useContext } from "react";
+import { UserContext } from "../hooks/UserContext";
 
 const SignUp = () => {
-  const { user, setUser } = useContext(UserContext);
   //const twitterBg =
   //"https://abs.twimg.com/sticky/illustrations/lohp_en_1302x955.png";
+  const { setUser } = useContext(UserContext);
+  const handleGoogleSignIn = () => {
+    signInWithGoogle()
+      .then((res) => {
+        console.log(res);
+        const userInfo = {
+          username: res.user.displayName,
+          email: res.user.email,
+          profile: res.user.photoURL,
+        };
+        setUser(userInfo);
+        localStorage.setItem("twitter-clone", JSON.stringify(userInfo));
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  const handleEmailSignIn = () => {
+    signInWithEmail("test@mail.com", "NOPASS").then((res) => console.log(res));
+  };
+
   return (
     <div className={styles.container}>
       <div className={styles.main}>
@@ -27,7 +48,7 @@ const SignUp = () => {
               Icon={FcGoogle}
               text="Sign up with Google"
               bgColor="#FFF"
-              action={signInWithGoogle}
+              action={handleGoogleSignIn}
             />
             <SignUpBtn
               Icon={BsTwitter}
@@ -40,7 +61,12 @@ const SignUp = () => {
               <p>or</p>
               <hr />
             </div>
-            <SignUpBtn text="Sign up with email" bgColor="#FFF" color="#000" />
+            <SignUpBtn
+              text="Sign up with email"
+              bgColor="#FFF"
+              color="#000"
+              action={handleEmailSignIn}
+            />
             <p className={styles.terms}>
               By signing up, you agree to the{" "}
               <Link to="#">Terms of Service</Link> and{" "}
