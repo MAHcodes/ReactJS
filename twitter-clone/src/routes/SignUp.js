@@ -69,7 +69,7 @@ const SignUp = () => {
               bgColor="#FFF"
               color="#000"
               action={() => {
-                setModal({ ...modal, createAccWithEmail: true });
+                setModal("EMAIL_SIGNUP");
               }}
               bold
             />
