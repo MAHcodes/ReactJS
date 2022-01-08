@@ -19,9 +19,9 @@
 }
 
 .error label {
-  color: rgb(var(--error));
+  color: rgb(var(--error)) !important;
 }
 
 .errBox {
-  border-color: rgb(var(--error));
+  border-color: rgb(var(--error)) !important;
 }
