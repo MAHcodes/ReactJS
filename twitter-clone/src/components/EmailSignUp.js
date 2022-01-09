@@ -11,11 +11,24 @@ const EmailSignUp = () => {
   const { setUser } = useContext(UserContext);
   const [emailErr, setEmailErr] = useState("");
   const [passErr, setPassErr] = useState("");
+  const [nameErr, setNameErr] = useState("");
   const emailInput = useRef(null);
   const passInput = useRef(null);
+  const nameInput = useRef(null);
 
   const validateSignUp = () => {
-    if (!emailErr && !passErr) {
+    return (
+      !emailErr &&
+      !passErr &&
+      !nameErr &&
+      !!nameInput.current.value &&
+      !!emailInput.current.value &&
+      !!passInput.current.value
+    );
+  };
+
+  const signUp = () => {
+    if (validateSignUp()) {
       signInWithEmail(emailInput.current.value, passInput.current.value)
         .then((user) => {
           console.log(user);
@@ -51,10 +64,25 @@ const EmailSignUp = () => {
       setPassErr("");
     }
   };
+  const validateName = (e) => {
+    if (e.target.value.length && e.target.value.length < 3) {
+      setNameErr("Name must be 3 characters at least.");
+    } else {
+      setNameErr("");
+    }
+  };
   return (
     <div className={styles.wrapper}>
       <h2 className={styles.title}>Create your account</h2>
       <form>
+        <TextInput
+          type="text"
+          classes={`${styles.name} ${styles.input}`}
+          title="Name"
+          err={nameErr}
+          validate={validateName}
+          reference={nameInput}
+        />
         <TextInput
           type="email"
           classes={`${styles.email} ${styles.input}`}
@@ -91,8 +119,10 @@ const EmailSignUp = () => {
           bgColor="#fff"
           bold
           color="#000"
-          action={validateSignUp}
+          action={signUp}
+          error={!validateSignUp()}
         />
+        {console.log(!nameInput.current.value)}
       </div>
     </div>
   );

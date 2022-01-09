@@ -14,18 +14,41 @@
   position: relative;
 }
 
-.hov:hover {
-  background-color: rgb(var(--bg-dark-2));
+.overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
 }
 
 .more {
   position: absolute;
-  inset: -100% 0 auto 0;
+  inset: 0 -10% auto -10%;
+  transform: translateY(-100%);
   background-color: rgb(var(--bg-dark));
   box-shadow: rgb(var(--fg-dark-1), 0.6) 0px 0px 15px,
     rgba(var(--fg-dark-1), 0.6) 0px 0px 3px 1px;
   border-radius: 15px;
+  overflow: hidden;
   z-index: 3;
+}
+
+.logout {
+  border-top: 1px solid rgb(var(--fg-dark-1), 0.7);
+  list-style-type: none;
+  padding: 0 0 0.5em;
+}
+
+.logout li {
+  padding: 1.25em;
+  cursor: pointer;
+  font-size: 0.85rem;
+  color: rgb(var(--fg-dark-2));
+  transition: background-color 200ms ease-in-out;
+}
+
+.logout li:hover,
+.hov:hover {
+  background-color: rgb(var(--bg-dark-2));
 }
 
 .username {
@@ -37,6 +60,7 @@
 
 .uname {
   color: rgb(var(--fg-dark-1));
+  font-size: 0.75rem;
 }
 
 .icon {
