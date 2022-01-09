@@ -7,7 +7,6 @@
   cursor: pointer;
   transition: background-color 200ms ease-in-out;
   margin-block: 0.5rem;
-  animation: in 150ms ease-in-out;
 }
 
 .rel {
@@ -30,6 +29,11 @@
   border-radius: 15px;
   overflow: hidden;
   z-index: 3;
+  animation: in 150ms ease-in-out;
+}
+
+.more .wrapper {
+  padding-inline: 1rem;
 }
 
 .logout {
@@ -70,10 +74,8 @@
 @keyframes in {
   from {
     opacity: 0;
-    transform: scale(0.9);
   }
   to {
     opacity: 1;
-    transform: scale(1);
   }
 }

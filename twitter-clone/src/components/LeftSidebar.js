@@ -16,12 +16,13 @@ import { CgList, CgMoreO } from "react-icons/cg";
 import { FaUser, FaRegUser, FaListAlt } from "react-icons/fa";
 import styles from "./LeftSidebar.module.css";
 import Account from "./Account";
+import TweetBtn from "./TweetBtn";
 
 const Sidebar = () => {
   return (
     <div className={styles.sidebar}>
       <div>
-        <NavbarLink Icon={BsTwitter} IconFilled={BsTwitter} route="" />
+        <NavbarLink logo Icon={BsTwitter} IconFilled={BsTwitter} route="/" />
         <NavbarLink
           Icon={RiHome7Line}
           IconFilled={RiHome7Fill}
@@ -70,7 +71,7 @@ const Sidebar = () => {
           route="more"
           title="More"
         />
-        <button className={styles.tweetBtn}>Tweet</button>
+        <TweetBtn />
       </div>
       <Account />
     </div>

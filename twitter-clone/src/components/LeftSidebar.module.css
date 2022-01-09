@@ -6,20 +6,3 @@
   height: 100%;
   justify-content: space-between;
 }
-
-.tweetBtn {
-  width: 90%;
-  background-color: rgb(var(--accent-color));
-  color: rgb(var(--fg-dark));
-  padding: 0.75em 1em;
-  border: none;
-  border-radius: 100vw;
-  font-weight: bold;
-  margin-block: 1em;
-  cursor: pointer;
-  transition: background-color 200ms ease-in-out;
-}
-
-.tweetBtn:hover {
-  background-color: rgba(var(--accent-color), 0.9);
-}

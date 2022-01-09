@@ -1,0 +1,47 @@
+.tweetBox {
+  display: flex;
+  padding: 1rem;
+  gap: 0.5rem;
+  border-bottom: 1px solid rgb(var(--fg-dark-1), 0.5);
+}
+
+.more {
+  flex: 1;
+}
+
+.more input {
+  width: 100%;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  padding: 0.5em;
+  color: rgb(var(--fb-dark));
+  font-size: 1.15rem;
+  margin-bottom: 1rem;
+}
+
+.opts {
+  display: flex;
+}
+
+.icons {
+  flex-basis: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 1em;
+  padding: 0.5em;
+}
+
+.icons > * {
+  font-size: 1.3rem;
+  color: rgb(var(--accent-color));
+  cursor: pointer;
+}
+
+.icons + button {
+  margin: 0 !important;
+  width: fit-content;
+  font-size: 0.8rem;
+  padding-inline: 1.5em;
+}

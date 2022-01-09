@@ -1,9 +1,9 @@
 import { NavLink } from "react-router-dom";
 import styles from "./NavbarLink.module.css";
 
-const NavbarLink = ({ Icon, IconFilled, title, route }) => {
+const NavbarLink = ({ Icon, IconFilled, title, route, logo }) => {
   return (
-    <div className={styles.navLink}>
+    <div className={`${logo && styles.logo} ${styles.navLink}`}>
       <NavLink
         className={(isActive) => (isActive.isActive ? styles.isActive : "")}
         to={`/${route}`}

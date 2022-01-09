@@ -16,6 +16,16 @@
   background-color: rgb(var(--bg-dark-2));
 }
 
+.logo p {
+  display: none;
+}
+
+.logo > a {
+  font-size: 1.75rem !important;
+  padding: 0.75rem !important;
+  margin-left: 0.25rem;
+}
+
 .navLink > a p {
   margin-left: 1em;
 }
