@@ -1,0 +1,43 @@
+select {
+  padding: 1.5em 3em 0.5em 0.5em;
+  background-color: transparent;
+  color: rgb(var(--fg-dark));
+  border-radius: 5px;
+  border: 2px solid rgb(var(--bg-dark-2));
+  --webkit-appearance: none;
+  -moz-appearance: none;
+  width: 100%;
+}
+
+.selectBox {
+  position: relative;
+  cursor: pointer;
+  width: 100%;
+  margin-top: 1rem;
+}
+
+.selectBox:focus-within select {
+  border-color: rgb(var(--accent-color)) !important;
+}
+
+.selectBox:focus-within .arrowDown,
+.selectBox:focus-within .title {
+  color: rgb(var(--accent-color)) !important;
+}
+
+.title {
+  color: rgb(var(--fg-dark-1));
+  font-size: 0.8rem;
+  position: absolute;
+  top: 5px;
+  left: 0.5em;
+}
+
+.arrowDown {
+  font-size: 1.5rem;
+  color: rgb(var(--fg-dark-1));
+  position: absolute;
+  inset: 0 0.5em 0 auto;
+  margin-block: auto;
+  pointer-events: none;
+}

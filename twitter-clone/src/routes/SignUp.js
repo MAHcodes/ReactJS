@@ -4,7 +4,7 @@ import { FcGoogle } from "react-icons/fc";
 import SignUpBtn from "../components/SignUpBtn";
 import { Link } from "react-router-dom";
 import Footer from "../components/Footer";
-import { signInWithEmail, signInWithGoogle } from "../firebase";
+import { signInWithGoogle } from "../firebase";
 import { useContext, useState } from "react";
 import { UserContext } from "../hooks/UserContext";
 import Modal from "../components/Modal";
@@ -18,6 +18,7 @@ const SignUp = () => {
       .then((res) => {
         console.log(res);
         const userInfo = {
+          uid: res.uid,
           username: res.user.displayName,
           email: res.user.email,
           profile: res.user.photoURL,
@@ -28,10 +29,6 @@ const SignUp = () => {
       .catch((err) => {
         console.log(err);
       });
-  };
-
-  const handleEmailSignIn = () => {
-    signInWithEmail("test@mail.com", "NOPASS").then((res) => console.log(res));
   };
 
   const [modal, setModal] = useState(false);

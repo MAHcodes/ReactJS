@@ -1,3 +1,7 @@
+.wrapper {
+  height: 100%;
+}
+
 .title {
   margin-block: 1em;
   font-size: 1.25rem;
@@ -30,4 +34,24 @@
 }
 .input:focus-within label {
   color: rgb(var(--accent-color));
+}
+
+.selectBox {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: nowrap;
+}
+
+.dob {
+  margin-top: 3rem;
+}
+
+.subtitle {
+  font-size: 0.85rem;
+  color: rgb(var(--fg-dark-2));
+}
+
+.subtitle + p {
+  font-size: 0.8rem;
+  color: rgb(var(--fg-dark-1));
 }

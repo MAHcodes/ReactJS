@@ -1,12 +1,38 @@
 import styles from "./EmailSignUp.module.css";
 import TextInput from "./TextInput";
-import { useState } from "react";
+import { useRef, useState, useContext } from "react";
+import { UserContext } from "../hooks/UserContext";
 import Select from "./Select";
 import { dates } from "../assets/dates";
+import SignUpBtn from "./SignUpBtn";
+import { signInWithEmail } from "../firebase";
 
 const EmailSignUp = () => {
+  const { setUser } = useContext(UserContext);
   const [emailErr, setEmailErr] = useState("");
   const [passErr, setPassErr] = useState("");
+  const emailInput = useRef(null);
+  const passInput = useRef(null);
+
+  const validateSignUp = () => {
+    if (!emailErr && !passErr) {
+      signInWithEmail(emailInput.current.value, passInput.current.value)
+        .then((user) => {
+          console.log(user);
+          const userInfo = {
+            uid: user.uid,
+            username: user.user.displayName,
+            email: user.user.email,
+            profile: user.user.photoURL,
+          };
+          setUser(userInfo);
+          localStorage.setItem("twitter-clone", JSON.stringify(userInfo));
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
+  };
 
   const validateEmail = (e) => {
     const pattern = new RegExp(
@@ -26,7 +52,7 @@ const EmailSignUp = () => {
     }
   };
   return (
-    <div>
+    <div className={styles.wrapper}>
       <h2 className={styles.title}>Create your account</h2>
       <form>
         <TextInput
@@ -35,6 +61,7 @@ const EmailSignUp = () => {
           title="Email"
           err={emailErr}
           validate={validateEmail}
+          reference={emailInput}
         />
         <TextInput
           type="password"
@@ -42,20 +69,30 @@ const EmailSignUp = () => {
           title="Password"
           err={passErr}
           validate={validatePass}
+          reference={passInput}
         />
       </form>
 
-      <div>
+      <div className={styles.dob}>
         <h2 className={styles.subtitle}>Date of birth</h2>
         <p>
           This will not be shown publicly. Confirm your own age, even if this
           account is for a business, a pet, or something else.
         </p>
-        <div className="selections">
+        <div className={styles.selectBox}>
           <Select title="Month" options={dates.months} />
           <Select title="Day" options={dates.days} />
           <Select title="Year" options={dates.years} />
         </div>
+      </div>
+      <div style={{ inset: "auto  2rem 1.5rem 2rem ", position: "absolute" }}>
+        <SignUpBtn
+          text="Sign Up"
+          bgColor="#fff"
+          bold
+          color="#000"
+          action={validateSignUp}
+        />
       </div>
     </div>
   );
