@@ -1,0 +1,6 @@
+.profile {
+  overflow: hidden;
+  aspect-ratio: 1;
+  width: 45px;
+  border-radius: 50%;
+}

@@ -1,0 +1,55 @@
+.wrapper {
+  display: flex;
+  align-items: center;
+  padding: 0.5rem;
+  padding-right: 1rem;
+  border-radius: 100vw;
+  cursor: pointer;
+  transition: background-color 200ms ease-in-out;
+  margin-block: 0.5rem;
+  animation: in 150ms ease-in-out;
+}
+
+.rel {
+  position: relative;
+}
+
+.hov:hover {
+  background-color: rgb(var(--bg-dark-2));
+}
+
+.more {
+  position: absolute;
+  inset: -100% 0 auto 0;
+  background-color: rgb(var(--bg-dark));
+  box-shadow: rgb(var(--fg-dark-1), 0.6) 0px 0px 15px,
+    rgba(var(--fg-dark-1), 0.6) 0px 0px 3px 1px;
+  border-radius: 15px;
+  z-index: 3;
+}
+
+.username {
+  padding-inline: 1em;
+  flex: 1;
+  line-height: 1.4;
+  font-size: 0.85em;
+}
+
+.uname {
+  color: rgb(var(--fg-dark-1));
+}
+
+.icon {
+  font-size: 1.1em;
+}
+
+@keyframes in {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
