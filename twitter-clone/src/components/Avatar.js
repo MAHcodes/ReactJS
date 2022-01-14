@@ -6,7 +6,7 @@ const Avatar = ({ url, uname }) => {
       <img
         src={
           url ||
-          `https://avatars.dicebear.com/api/initials/${uname}.svg?backgroundColors[]=lightBlue`
+          `https://avatars.dicebear.com/api/initials/${uname}.svg?backgroundColors[]=lightBlue&chars=1`
         }
         alt={uname}
       />

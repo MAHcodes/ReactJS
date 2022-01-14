@@ -9,6 +9,7 @@ import { useContext } from "react";
 const Account = () => {
   const { user, setUser } = useContext(UserContext);
   const [isOpened, setIsOpened] = useState(false);
+  console.log(user);
 
   const generateUname = (name) => {
     return name && `@${name.split(" ").join("").toLowerCase()}`;

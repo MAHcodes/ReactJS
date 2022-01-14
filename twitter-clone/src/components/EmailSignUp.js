@@ -9,32 +9,32 @@ import { signInWithEmail } from "../firebase";
 
 const EmailSignUp = () => {
   const { setUser } = useContext(UserContext);
-  const [emailErr, setEmailErr] = useState("");
-  const [passErr, setPassErr] = useState("");
-  const [nameErr, setNameErr] = useState("");
-  const emailInput = useRef(null);
-  const passInput = useRef(null);
-  const nameInput = useRef(null);
+  const [emailErr, setEmailErr] = useState(null);
+  const [passErr, setPassErr] = useState(null);
+  const [nameErr, setNameErr] = useState(null);
+  const [emailInput, setEmailInput] = useState("");
+  const [passInput, setPassInput] = useState("");
+  const [nameInput, setNameInput] = useState("");
 
-  const validateSignUp = () => {
+  const signUpIsValid = () => {
     return (
       !emailErr &&
       !passErr &&
       !nameErr &&
-      !!nameInput.current.value &&
-      !!emailInput.current.value &&
-      !!passInput.current.value
+      emailInput.length > 0 &&
+      nameInput.length >= 3 &&
+      passInput.length >= 6
     );
   };
 
   const signUp = () => {
-    if (validateSignUp()) {
-      signInWithEmail(emailInput.current.value, passInput.current.value)
+    if (signUpIsValid()) {
+      signInWithEmail(emailInput, passInput)
         .then((user) => {
           console.log(user);
           const userInfo = {
-            uid: user.uid,
-            username: user.user.displayName,
+            uid: user.user.uid,
+            username: user.user.displayName || nameInput,
             email: user.user.email,
             profile: user.user.photoURL,
           };
@@ -54,21 +54,21 @@ const EmailSignUp = () => {
     if (!pattern.test(e.target.value) && e.target.value.length) {
       setEmailErr("Please enter a valid email.");
     } else {
-      setEmailErr("");
+      setEmailErr(null);
     }
   };
   const validatePass = (e) => {
     if (e.target.value.length && e.target.value.length < 6) {
       setPassErr("Password must be 6 characters at least.");
     } else {
-      setPassErr("");
+      setPassErr(null);
     }
   };
   const validateName = (e) => {
     if (e.target.value.length && e.target.value.length < 3) {
       setNameErr("Name must be 3 characters at least.");
     } else {
-      setNameErr("");
+      setNameErr(null);
     }
   };
   return (
@@ -81,7 +81,8 @@ const EmailSignUp = () => {
           title="Name"
           err={nameErr}
           validate={validateName}
-          reference={nameInput}
+          inputValue={nameInput}
+          setInputValue={setNameInput}
         />
         <TextInput
           type="email"
@@ -89,7 +90,8 @@ const EmailSignUp = () => {
           title="Email"
           err={emailErr}
           validate={validateEmail}
-          reference={emailInput}
+          inputValue={emailInput}
+          setInputValue={setEmailInput}
         />
         <TextInput
           type="password"
@@ -97,7 +99,8 @@ const EmailSignUp = () => {
           title="Password"
           err={passErr}
           validate={validatePass}
-          reference={passInput}
+          inputValue={passInput}
+          setInputValue={setPassInput}
         />
       </form>
 
@@ -120,9 +123,8 @@ const EmailSignUp = () => {
           bold
           color="#000"
           action={signUp}
-          error={!validateSignUp()}
+          error={!signUpIsValid()}
         />
-        {console.log(!nameInput.current.value)}
       </div>
     </div>
   );

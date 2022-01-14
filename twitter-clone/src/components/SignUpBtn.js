@@ -12,11 +12,10 @@ const SignUpBtn = ({
 }) => {
   return (
     <button
-      className={`${styles.btn} ${border && styles.brdr} ${
-        bold && styles.bld
-      } ${error && styles.disabled}`}
+      className={`${styles.btn} ${border && styles.brdr} ${bold && styles.bld}`}
       style={{ backgroundColor: bgColor, color }}
       onClick={action}
+      disabled={error ? "disabled" : ""}
     >
       {Icon && <Icon className={styles.icon} />}
       {text}

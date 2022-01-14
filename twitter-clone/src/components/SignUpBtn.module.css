@@ -28,11 +28,11 @@
   font-weight: bold;
 }
 
-.disabled {
+button:disabled {
   opacity: 0.5;
   cursor: not-allowed;
 }
 
-.disabled:hover {
+button:disabled:hover {
   opacity: 0.5 !important;
 }
