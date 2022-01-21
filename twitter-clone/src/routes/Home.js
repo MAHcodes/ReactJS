@@ -8,19 +8,18 @@ import { BsStars } from "react-icons/bs";
 
 const Home = () => {
   const [posts, setPosts] = useState("");
-  //useEffect(() => {
-  //(async function (db) {
-  //const postsCol = collection(db, "posts");
-  //onSnapshot(postsCol, (snapshot) => {
-  //const postList = snapshot.docs.map((doc) => ({
-  //id: doc.id,
-  //...doc.data(),
-  //}));
-  //setPosts(JSON.stringify(postList));
-  //console.log(postList);
-  //});
-  //})(db);
-  //}, []);
+  useEffect(() => {
+    (async function (db) {
+      const usersCol = collection(db, "users");
+      onSnapshot(usersCol, (snapshot) => {
+        const postList = snapshot.docs.map((doc) => ({
+          id: doc.id,
+          ...doc.data(),
+        }));
+        setPosts(JSON.stringify(postList));
+      });
+    })(db);
+  }, []);
 
   return (
     <div className={styles.home}>

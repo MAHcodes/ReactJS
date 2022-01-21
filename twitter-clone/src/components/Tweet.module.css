@@ -24,6 +24,29 @@
   display: flex;
 }
 
+.media {
+  position: relative;
+}
+
+.media > img {
+  width: 100%;
+  object-fit: contain;
+  margin-block: 1rem;
+  border-radius: 1rem;
+}
+
+.media > .remove {
+  padding: 0.5rem;
+  background-color: rgba(var(--bg-dark), 0.75);
+  color: rgb(var(--fg-dark));
+  border: none;
+  border-radius: 50%;
+  position: absolute;
+  top: 0.25rem;
+  left: 0.25rem;
+  cursor: pointer;
+}
+
 .icons {
   flex-basis: 100%;
   display: flex;

@@ -16,7 +16,7 @@ const SignUp = () => {
   //"https://abs.twimg.com/sticky/illustrations/lohp_en_1302x955.png";
   const { setUser } = useContext(UserContext);
   const saveUser = (userInfo, uid) => {
-    setUser(userInfo);
+    setUser({ uid, ...userInfo });
     localStorage.setItem("twitter-clone", JSON.stringify({ uid, ...userInfo }));
   };
 
@@ -31,8 +31,6 @@ const SignUp = () => {
         };
         const docRef = doc(db, "users", res.user.uid);
         getDoc(docRef).then((docSnap) => {
-          console.log(docSnap);
-          console.log(docSnap.exists());
           if (docSnap.exists()) {
             saveUser(userInfo, res.user.uid);
           } else {
