@@ -10,7 +10,7 @@ import { HiOutlineLocationMarker } from "react-icons/hi";
 import { AiOutlineSchedule } from "react-icons/ai";
 import TweetBtn from "./TweetBtn";
 import { db } from "../firebase";
-import { updateDoc, addDoc, doc, arrayUnion } from "firebase/firestore";
+import { updateDoc, doc, arrayUnion } from "firebase/firestore";
 
 const Tweet = () => {
   const { user } = useContext(UserContext);

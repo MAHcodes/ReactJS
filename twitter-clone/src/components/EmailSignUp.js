@@ -6,6 +6,8 @@ import Select from "./Select";
 import { dates } from "../assets/dates";
 import SignUpBtn from "./SignUpBtn";
 import { signInWithEmail } from "../firebase";
+import { db } from "../firebase";
+import { doc, setDoc } from "firebase/firestore";
 
 const EmailSignUp = () => {
   const { setUser } = useContext(UserContext);
@@ -31,15 +33,19 @@ const EmailSignUp = () => {
     if (signUpIsValid()) {
       signInWithEmail(emailInput, passInput)
         .then((user) => {
-          console.log(user);
           const userInfo = {
-            uid: user.user.uid,
             username: user.user.displayName || nameInput,
             email: user.user.email,
             profile: user.user.photoURL,
+            verified: false,
           };
-          setUser(userInfo);
-          localStorage.setItem("twitter-clone", JSON.stringify(userInfo));
+          setDoc(doc(db, "users", user.user.uid), userInfo).then(() => {
+            setUser(userInfo);
+            localStorage.setItem(
+              "twitter-clone",
+              JSON.stringify({ uid: user.user.uid, ...userInfo })
+            );
+          });
         })
         .catch((err) => {
           console.log(err);

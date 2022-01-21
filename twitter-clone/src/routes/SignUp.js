@@ -9,12 +9,17 @@ import { useContext, useState } from "react";
 import { UserContext } from "../hooks/UserContext";
 import Modal from "../components/Modal";
 import { db } from "../firebase";
-import { doc, setDoc } from "firebase/firestore";
+import { doc, setDoc, getDoc } from "firebase/firestore";
 
 const SignUp = () => {
   //const twitterBg =
   //"https://abs.twimg.com/sticky/illustrations/lohp_en_1302x955.png";
   const { setUser } = useContext(UserContext);
+  const saveUser = (userInfo, uid) => {
+    setUser(userInfo);
+    localStorage.setItem("twitter-clone", JSON.stringify({ uid, ...userInfo }));
+  };
+
   const handleGoogleSignIn = () => {
     signInWithGoogle()
       .then((res) => {
@@ -23,14 +28,19 @@ const SignUp = () => {
           email: res.user.email,
           profile: res.user.photoURL,
           verified: false,
-          posts: [],
         };
-        setUser(userInfo);
-        setDoc(doc(db, "users", res.user.uid), userInfo);
-        localStorage.setItem(
-          "twitter-clone",
-          JSON.stringify({ uid: res.user.uid, ...userInfo })
-        );
+        const docRef = doc(db, "users", res.user.uid);
+        getDoc(docRef).then((docSnap) => {
+          console.log(docSnap);
+          console.log(docSnap.exists());
+          if (docSnap.exists()) {
+            saveUser(userInfo, res.user.uid);
+          } else {
+            setDoc(doc(db, "users", res.user.uid), userInfo).then(() => {
+              saveUser(userInfo, res.user.uid);
+            });
+          }
+        });
       })
       .catch((err) => {
         console.log(err);
