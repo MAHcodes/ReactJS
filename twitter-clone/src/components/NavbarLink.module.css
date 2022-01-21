@@ -12,6 +12,10 @@
   line-height: 1.25em;
 }
 
+.navLink + .navLink {
+  margin-top: 0.25em;
+}
+
 .navLink > a:hover {
   background-color: rgb(var(--bg-dark-2));
 }

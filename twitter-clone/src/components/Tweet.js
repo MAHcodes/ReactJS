@@ -9,13 +9,31 @@ import { FiSmile } from "react-icons/fi";
 import { HiOutlineLocationMarker } from "react-icons/hi";
 import { AiOutlineSchedule } from "react-icons/ai";
 import TweetBtn from "./TweetBtn";
+import { db } from "../firebase";
+import { updateDoc, addDoc, doc, arrayUnion } from "firebase/firestore";
 
 const Tweet = () => {
   const { user } = useContext(UserContext);
   const [tweetText, setTweetText] = useState("");
 
+  const handleTweet = (e) => {
+    e.preventDefault();
+    console.log(tweetText);
+    console.log(user);
+    const docRef = doc(db, "users", user.uid);
+
+    updateDoc(docRef, {
+      posts: arrayUnion({
+        postText: tweetText,
+        timeStamp: 12,
+      }),
+    }).then(() => {
+      setTweetText("");
+    });
+  };
+
   return (
-    <div className={styles.tweetBox}>
+    <form onSubmit={handleTweet} className={styles.tweetBox}>
       <div className={styles.avatar}>
         <Avatar url={user.profile} uname={user.username} />
       </div>
@@ -38,7 +56,7 @@ const Tweet = () => {
           <TweetBtn tweetText={tweetText} />
         </div>
       </div>
-    </div>
+    </form>
   );
 };
 

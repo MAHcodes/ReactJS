@@ -8,6 +8,8 @@ import { signInWithGoogle } from "../firebase";
 import { useContext, useState } from "react";
 import { UserContext } from "../hooks/UserContext";
 import Modal from "../components/Modal";
+import { db } from "../firebase";
+import { doc, setDoc } from "firebase/firestore";
 
 const SignUp = () => {
   //const twitterBg =
@@ -16,15 +18,19 @@ const SignUp = () => {
   const handleGoogleSignIn = () => {
     signInWithGoogle()
       .then((res) => {
-        console.log(res);
         const userInfo = {
-          uid: res.uid,
           username: res.user.displayName,
           email: res.user.email,
           profile: res.user.photoURL,
+          verified: false,
+          posts: [],
         };
         setUser(userInfo);
-        localStorage.setItem("twitter-clone", JSON.stringify(userInfo));
+        setDoc(doc(db, "users", res.user.uid), userInfo);
+        localStorage.setItem(
+          "twitter-clone",
+          JSON.stringify({ uid: res.user.uid, ...userInfo })
+        );
       })
       .catch((err) => {
         console.log(err);
