@@ -1,0 +1,22 @@
+.loadingContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.loadingContainer > div {
+  border: 2px solid rgba(var(--accent-color), 0.4);
+  border-top-color: rgb(var(--accent-color));
+  border-top-width: 3px;
+  border-radius: 50%;
+  aspect-ratio: 1;
+  width: 25px;
+  margin-block: 0.5em;
+  animation: rotate 0.75s linear infinite;
+}
+
+@keyframes rotate {
+  to {
+    transform: rotate(360deg);
+  }
+}

@@ -19,11 +19,14 @@ import {
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 import { storage } from "../firebase";
 import { CgClose } from "react-icons/cg";
+import Loading from "./Loading";
 
 const Tweet = () => {
   const { user } = useContext(UserContext);
   const [tweetText, setTweetText] = useState("");
   const [media, setMedia] = useState("");
+  const [mediaLoading, setMediaLoading] = useState(false);
+  const [mediaError, setMediaError] = useState("");
   const docRef = doc(db, "posts", user.uid);
   const imgRef = useRef(null);
 
@@ -47,11 +50,23 @@ const Tweet = () => {
   const uploadImage = (file) => {
     if (!file) return;
     const storageRef = ref(storage, `images/${file.lastModified}_${file.name}`);
-    uploadBytes(storageRef, file).then(() => {
-      getDownloadURL(storageRef).then((url) => {
-        setMedia(url);
+    setMediaLoading(true);
+    uploadBytes(storageRef, file)
+      .then(() => {
+        getDownloadURL(storageRef)
+          .then((url) => {
+            setMedia(url);
+          })
+          .catch((err) => {
+            setMediaError(err.message);
+          });
+      })
+      .catch((err) => {
+        setMediaError(err.message);
+      })
+      .finally(() => {
+        setMediaLoading(false);
       });
-    });
   };
 
   return (
@@ -66,17 +81,23 @@ const Tweet = () => {
           type="text"
           placeholder="What's happening?"
         />
-        {media && (
-          <div className={styles.media}>
-            <img src={media} alt={media} className={styles.media} />
-            <button
-              onClick={() => setMedia("")}
-              className={styles.remove}
-              title="Remove"
-            >
-              <CgClose />
-            </button>
-          </div>
+        {mediaLoading ? (
+          <Loading />
+        ) : mediaError ? (
+          <p style={{ color: "rgb(var(--error))" }}>{mediaError}</p>
+        ) : (
+          media && (
+            <div className={styles.media}>
+              <img src={media} alt={media} className={styles.media} />
+              <button
+                onClick={() => setMedia("")}
+                className={styles.remove}
+                title="Remove"
+              >
+                <CgClose />
+              </button>
+            </div>
+          )
         )}
         <div className={styles.opts}>
           <div className={styles.icons}>
