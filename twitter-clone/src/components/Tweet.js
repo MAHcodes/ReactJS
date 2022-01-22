@@ -124,7 +124,9 @@ const Tweet = () => {
             <div onClick={toggleGif}>
               <RiFileGifLine style={{ pointerEvents: "none" }} />
             </div>
-            {gifShow && <GiphyGrid setGifShow={setGifShow} />}
+            {gifShow && (
+              <GiphyGrid setMedia={setMedia} setGifShow={setGifShow} />
+            )}
             {gifShow && (
               <div
                 style={{ backgroundColor: "rgb(var(--overlay))" }}

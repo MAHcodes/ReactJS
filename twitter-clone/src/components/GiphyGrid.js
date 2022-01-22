@@ -5,7 +5,7 @@ import useFetch from "../hooks/useFetch";
 import { useEffect, useState } from "react";
 import Loading from "./Loading";
 
-const GiphyGrid = ({ setGifShow }) => {
+const GiphyGrid = ({ setMedia, setGifShow }) => {
   const API_KEY = process.env.REACT_APP_GIPHY_API_KEY;
   const [gifs, setGifs] = useState([]);
   const { data, error, loading } = useFetch(
@@ -32,7 +32,11 @@ const GiphyGrid = ({ setGifShow }) => {
           <CgClose />
         </button>
         <div className={styles.searchInput}>
-          <SearchInput bg="rgb(var(--bg-dark))" pHolder="Search for GIFs" />
+          <SearchInput
+            pad="0.35em 1em"
+            bg="rgb(var(--bg-dark))"
+            pHolder="Search for GIFs"
+          />
         </div>
       </div>
       <div className={styles.gifsContainer}>
@@ -43,7 +47,15 @@ const GiphyGrid = ({ setGifShow }) => {
         ) : (
           gifs &&
           gifs?.map((gif) => (
-            <img className={styles.gif} src={gif} alt="Giphy" />
+            <img
+              onClick={() => {
+                setMedia(gif);
+                setGifShow(false);
+              }}
+              className={styles.gif}
+              src={gif}
+              alt="Giphy"
+            />
           ))
         )}
       </div>

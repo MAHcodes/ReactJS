@@ -1,29 +1,35 @@
 .giphyBox {
   position: fixed;
-  bottom: top;
-  left: 0;
-  right: 0;
-
-  margin-inline: auto;
+  inset: 2rem 0 auto 0;
+  margin: auto;
+  padding: 0.5em;
   max-width: 650px;
   cursor: auto !important;
   border-radius: 1rem;
   background-color: rgb(var(--bg-dark));
   z-index: 3;
-  overflow: hidden;
+  overflow: hidden auto;
+  max-height: 70vh;
 }
 
 .searchInput {
-  padding: 1rem 2rem 1rem 4rem;
+  padding: 0.25rem 2rem 1rem 4rem;
 }
 
 .gifsContainer {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  display: flex;
+  flex-wrap: wrap;
   overflow: hidden auto;
+  gap: 2px;
 }
 
 .gif {
-  object-fit: fill;
-  height: 80px;
+  object-fit: cover;
+  width: calc(25% - 2px);
+  cursor: pointer;
+}
+
+.gif:hover {
+  position: relative;
+  z-index: 4;
 }

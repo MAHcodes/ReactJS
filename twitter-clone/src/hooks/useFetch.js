@@ -10,6 +10,7 @@ const useFetch = (URL, params = "{}") => {
     let isMounted = true;
     const source = axios.CancelToken.source();
 
+    setLoading(true);
     axios
       .get(URL, { ...params, cancelToken: source.token })
       .then((res) => {
