@@ -1,0 +1,29 @@
+.giphyBox {
+  position: fixed;
+  bottom: top;
+  left: 0;
+  right: 0;
+
+  margin-inline: auto;
+  max-width: 650px;
+  cursor: auto !important;
+  border-radius: 1rem;
+  background-color: rgb(var(--bg-dark));
+  z-index: 3;
+  overflow: hidden;
+}
+
+.searchInput {
+  padding: 1rem 2rem 1rem 4rem;
+}
+
+.gifsContainer {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  overflow: hidden auto;
+}
+
+.gif {
+  object-fit: fill;
+  height: 80px;
+}

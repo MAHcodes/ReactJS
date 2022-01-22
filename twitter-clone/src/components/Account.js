@@ -23,10 +23,7 @@ const Account = () => {
   return (
     <>
       {isOpened && (
-        <div
-          className={styles.overlay}
-          onClick={() => setIsOpened(false)}
-        ></div>
+        <div className="overlay" onClick={() => setIsOpened(false)}></div>
       )}
       <div className={styles.rel}>
         {isOpened && (

@@ -13,12 +13,6 @@
   position: relative;
 }
 
-.overlay {
-  position: absolute;
-  inset: 0;
-  z-index: 2;
-}
-
 .more {
   position: absolute;
   inset: 0 -10% auto -10%;

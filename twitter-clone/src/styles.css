@@ -107,3 +107,22 @@ body,
   max-width: 1280px;
   margin-inline: auto;
 }
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 2;
+  cursor: auto !important;
+}
+
+.removeBtn {
+  padding: 0.5rem;
+  background-color: rgba(var(--bg-dark), 0.75);
+  color: rgb(var(--fg-dark));
+  border: none;
+  border-radius: 50%;
+  position: absolute;
+  top: 0.25rem;
+  left: 0.25rem;
+  cursor: pointer;
+}

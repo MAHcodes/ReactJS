@@ -20,6 +20,7 @@ import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 import { storage } from "../firebase";
 import { CgClose } from "react-icons/cg";
 import Loading from "./Loading";
+import GiphyGrid from "./GiphyGrid";
 
 const Tweet = () => {
   const { user } = useContext(UserContext);
@@ -29,6 +30,7 @@ const Tweet = () => {
   const [mediaError, setMediaError] = useState("");
   const docRef = doc(db, "posts", user.uid);
   const imgRef = useRef(null);
+  const [gifShow, setGifShow] = useState(false);
 
   const handleTweet = (e) => {
     e.preventDefault();
@@ -69,6 +71,10 @@ const Tweet = () => {
       });
   };
 
+  const toggleGif = () => {
+    setGifShow(!gifShow);
+  };
+
   return (
     <form onSubmit={handleTweet} className={styles.tweetBox}>
       <div className={styles.avatar}>
@@ -91,7 +97,7 @@ const Tweet = () => {
               <img src={media} alt={media} className={styles.media} />
               <button
                 onClick={() => setMedia("")}
-                className={styles.remove}
+                className="removeBtn"
                 title="Remove"
               >
                 <CgClose />
@@ -115,7 +121,17 @@ const Tweet = () => {
             <label htmlFor="img">
               <IoImageOutline />
             </label>
-            <RiFileGifLine />
+            <div onClick={toggleGif}>
+              <RiFileGifLine style={{ pointerEvents: "none" }} />
+            </div>
+            {gifShow && <GiphyGrid setGifShow={setGifShow} />}
+            {gifShow && (
+              <div
+                style={{ backgroundColor: "rgb(var(--overlay))" }}
+                className="overlay"
+                onClick={() => setGifShow(false)}
+              ></div>
+            )}
             <BiPoll />
             <FiSmile />
             <AiOutlineSchedule />
