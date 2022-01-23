@@ -8,15 +8,17 @@ import Loading from "./Loading";
 const GiphyGrid = ({ setMedia, setGifShow }) => {
   const API_KEY = process.env.REACT_APP_GIPHY_API_KEY;
   const [gifs, setGifs] = useState([]);
+  const params = { limit: 25, offset: 0 };
   const { data, error, loading } = useFetch(
-    `https://api.giphy.com/v1/gifs/trending?api_key=${API_KEY}`
+    `https://api.giphy.com/v1/gifs/trending?api_key=${API_KEY}`,
+    JSON.stringify(params)
   );
 
   useEffect(() => {
     console.log(data?.data.data);
     const gifsList = data?.data.data;
     const gifsURL = gifsList?.map((gif) =>
-      gif.images.downsized.url.replace(/media+\d/g, "i")
+      gif.images.downsized?.url?.replace(/medkia+\d/g, "i")
     );
     setGifs(gifsURL);
   }, [data]);
@@ -46,15 +48,17 @@ const GiphyGrid = ({ setMedia, setGifShow }) => {
           <p style={{ color: "rgb(var(--error))" }}>{error.message}</p>
         ) : (
           gifs &&
-          gifs?.map((gif) => (
+          gifs?.map((gif, i) => (
             <img
               onClick={() => {
                 setMedia(gif);
                 setGifShow(false);
               }}
+              key={`${i}${gif}`}
               className={styles.gif}
               src={gif}
-              alt="Giphy"
+              alt=""
+              loading="lazy"
             />
           ))
         )}

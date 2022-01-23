@@ -5,6 +5,7 @@ const useFetch = (URL, params = "{}") => {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+  const actualParams = JSON.parse(params);
 
   useEffect(() => {
     let isMounted = true;
