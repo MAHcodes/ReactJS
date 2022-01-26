@@ -1,12 +1,7 @@
 import styles from "./SearchInput.module.css";
 import { RiSearchLine } from "react-icons/ri";
-import useFetch from "../hooks/useFetch";
 
-const Search = ({ pHolder, bg, pad }) => {
-  const API_KEY = process.env.REACT_APP_GIPHY_API_KEY;
-  const { data, error, loading } = useFetch(
-    `https://api.giphy.com/v1/gifs/trending?api_key=${API_KEY}`
-  );
+const Search = ({ pHolder, bg, pad, val, handleSearch }) => {
   return (
     <div>
       <div
@@ -14,7 +9,12 @@ const Search = ({ pHolder, bg, pad }) => {
         className={styles.search}
       >
         <RiSearchLine className={styles.icon} />
-        <input type="search" placeholder={pHolder} />
+        <input
+          type="search"
+          placeholder={pHolder}
+          value={val}
+          onChange={(e) => handleSearch(e)}
+        />
       </div>
     </div>
   );

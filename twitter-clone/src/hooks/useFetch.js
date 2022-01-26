@@ -1,11 +1,14 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 
-const useFetch = (URL, params = "{}") => {
+const useFetch = (URL, offset, query, limit) => {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-  const actualParams = JSON.parse(params);
+
+  useEffect(() => {
+    setData([]);
+  }, [URL, query]);
 
   useEffect(() => {
     let isMounted = true;
@@ -13,10 +16,16 @@ const useFetch = (URL, params = "{}") => {
 
     setLoading(true);
     axios
-      .get(URL, { ...params, cancelToken: source.token })
+      .get(URL, {
+        params: { offset, q: query, limit },
+        cancelToken: source.token,
+      })
       .then((res) => {
+        console.log(res);
         if (isMounted) {
-          setData(res);
+          setData((prevData) =>
+            !prevData ? [...prevData.data, ...res.data] : res.data
+          );
           setError(null);
         }
       })
@@ -34,7 +43,7 @@ const useFetch = (URL, params = "{}") => {
       isMounted = false;
       source.cancel();
     };
-  }, [URL, params]);
+  }, [URL, limit, query, offset]);
 
   return { data, loading, error };
 };

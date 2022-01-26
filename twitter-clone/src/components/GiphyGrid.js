@@ -8,15 +8,23 @@ import Loading from "./Loading";
 const GiphyGrid = ({ setMedia, setGifShow }) => {
   const API_KEY = process.env.REACT_APP_GIPHY_API_KEY;
   const [gifs, setGifs] = useState([]);
-  const params = { limit: 25, offset: 0 };
+  const [offset, setOffset] = useState(0);
+  const [endpoint, setEndpoint] = useState("trending");
+  const [searchQuery, setSearchQuery] = useState("");
   const { data, error, loading } = useFetch(
-    `https://api.giphy.com/v1/gifs/trending?api_key=${API_KEY}`,
-    JSON.stringify(params)
+    `https://api.giphy.com/v1/gifs/${endpoint}?api_key=${API_KEY}`,
+    offset,
+    searchQuery,
+    25
   );
 
+  const handleSearch = (e) => {
+    setSearchQuery(e.target.value);
+    setEndpoint(searchQuery ? "search" : "trending");
+  };
+
   useEffect(() => {
-    console.log(data?.data.data);
-    const gifsList = data?.data.data;
+    const gifsList = data?.data;
     const gifsURL = gifsList?.map((gif) =>
       gif.images.downsized?.url?.replace(/medkia+\d/g, "i")
     );
@@ -38,6 +46,8 @@ const GiphyGrid = ({ setMedia, setGifShow }) => {
             pad="0.35em 1em"
             bg="rgb(var(--bg-dark))"
             pHolder="Search for GIFs"
+            val={searchQuery}
+            handleSearch={handleSearch}
           />
         </div>
       </div>

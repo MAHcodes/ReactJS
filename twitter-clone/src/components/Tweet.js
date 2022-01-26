@@ -10,12 +10,7 @@ import { HiOutlineLocationMarker } from "react-icons/hi";
 import { AiOutlineSchedule } from "react-icons/ai";
 import TweetBtn from "./TweetBtn";
 import { db } from "../firebase";
-import {
-  doc,
-  arrayUnion,
-  updateDoc,
-  serverTimestamp,
-} from "firebase/firestore";
+import { doc, serverTimestamp, addDoc, collection } from "firebase/firestore";
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 import { storage } from "../firebase";
 import { CgClose } from "react-icons/cg";
@@ -28,24 +23,21 @@ const Tweet = () => {
   const [media, setMedia] = useState("");
   const [mediaLoading, setMediaLoading] = useState(false);
   const [mediaError, setMediaError] = useState("");
-  const docRef = doc(db, "posts", user.uid);
+  const colRef = collection(db, "users", user.uid, "posts");
   const imgRef = useRef(null);
   const [gifShow, setGifShow] = useState(false);
 
   const handleTweet = (e) => {
     e.preventDefault();
-    updateDoc(docRef, {
-      posts: arrayUnion({
-        postText: tweetText,
-        media,
-        timeStamp: 12,
-        replies: [],
-        retweets: 0,
-        likes: 0,
-        created: serverTimestamp(),
-      }),
-    }).then(() => {
-      setTweetText("");
+    setTweetText("");
+    setMedia("");
+    addDoc(colRef, {
+      postText: tweetText,
+      media,
+      replies: [],
+      retweets: 0,
+      likes: 0,
+      timeStamp: serverTimestamp(),
     });
   };
 
