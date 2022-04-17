@@ -1,6 +1,7 @@
 import State from "./useState";
 import Effect from "./useEffect";
 import Ref from "./useRef";
+import Reducer from "./useReducer";
 
 function App() {
   return (
@@ -8,6 +9,7 @@ function App() {
       <State />
       <Effect />
       <Ref />
+      <Reducer />
     </div>
   );
 }
